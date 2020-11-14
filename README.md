@@ -3,4 +3,23 @@
 The Lightning Donation Widget allows online content creators to receive donations from their users/visitors directly from their website.
 It uses the Bitcoin Lightning network as standard to allow global payments. The payment is sent directly from the user to the receipient's wallet with no reuquired middlemen.
 
-The goal is to provide a simple solution for content producers to receive lightning donations. 
+The goal is to provide a simple solution for content producers to receive lightning donations.
+
+<br>
+
+## Info
+
+This project is built using [preact-cli](1) and uses the [widget](2) template as a boilerplate.
+
+<br>
+
+## Build Instructions
+
+For generating a production build, run the following command:
+
+```bash
+npm run build
+```
+
+[1]: https://github.com/preactjs/preact-cli
+[2]: https://github.com/preactjs-templates/widget
