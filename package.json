@@ -37,6 +37,8 @@
     "preact-render-to-string": "^4.1.0",
     "preact-router": "^2.5.7"
     "stylis-plugin-extra-scope": "^0.2.1"
+    "preact-router": "^2.5.7",
+    "stylis-plugin-extra-scope": "https://github.com/tpict/stylis-plugin-extra-scope.git#stylis-v4"
   },
   "jest": {
     "verbose": true,
