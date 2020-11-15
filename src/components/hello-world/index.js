@@ -1,12 +1,12 @@
 import { h, Component } from "preact";
-import { Title } from "./styled";
+import { WidgetWrapper, Title } from "./styled";
 
 export default class App extends Component {
   render(props) {
     return (
-      <div>
+      <WidgetWrapper>
         <Title>Hello, World!</Title>
-      </div>
+      </WidgetWrapper>
     );
   }
 }
