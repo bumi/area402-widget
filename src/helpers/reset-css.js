@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
