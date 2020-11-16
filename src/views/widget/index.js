@@ -5,8 +5,8 @@ import { useState } from "preact/hooks";
 import Modal from "../../components/modal";
 import Button from "../../components/button";
 
-const Widget = () => {
-  const [isModalOpen, setModalIsOpen] = useState(false);
+const Widget = ({ showModal }) => {
+  const [isModalOpen, setModalIsOpen] = useState(showModal);
 
   const toggleModalVisibility = () => {
     setModalIsOpen(!isModalOpen);
@@ -18,6 +18,10 @@ const Widget = () => {
       {isModalOpen && <Modal onRequestClose={toggleModalVisibility} />}
     </div>
   );
+};
+
+Widget.defaultProps = {
+  showModal: false,
 };
 
 export default Widget;
