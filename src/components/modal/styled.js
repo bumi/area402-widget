@@ -10,13 +10,35 @@ export const Backdrop = styled.div`
   top: 0;
   z-index: 1;
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ModalContainer = styled.div`
-  background: #fff;
-  border-radius: 5px;
-  max-width: 100%;
-  margin: 50px auto;
-  padding: 15px;
   width: 40%;
+  padding: 15px;
+  height: 500px;
+  display: flex;
+  max-width: 100%;
+  background: #fff;
+  margin: 50px auto;
+  border-radius: 5px;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const TitleWrapper = styled.div`
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const StyledImage = styled.img`
+  height: 50px;
+  width: 100px;
+`;
+
+export const Title = styled.h3`
+  font-size: 15px;
 `;

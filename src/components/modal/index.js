@@ -1,12 +1,17 @@
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 
-import Button from "../button";
-import { Backdrop, ModalContainer } from "./styled";
+import {
+  Title,
+  Backdrop,
+  StyledImage,
+  TitleWrapper,
+  ModalContainer,
+} from "./styled";
 
-const Modal = ({ onRequestClose }) => {
+const Modal = ({ onRequestClose, imageSrc, title, isModalOpen, children }) => {
   const onKeyDown = (event) => {
-    if (event.keyCode === 27) {
+    if (event.keyCode === 27 && isModalOpen) {
       // Close the modal when the Escape key is pressed
       onRequestClose();
     }
@@ -28,10 +33,21 @@ const Modal = ({ onRequestClose }) => {
   return (
     <Backdrop onClick={onRequestClose}>
       <ModalContainer>
-        <Button buttonClick={onRequestClose} btnText="Close modal" />
+        <TitleWrapper>
+          {imageSrc && <StyledImage src={imageSrc} />}
+          <Title>{title || "402"}</Title>
+        </TitleWrapper>
+        {children}
       </ModalContainer>
     </Backdrop>
   );
+};
+
+Modal.defaultProps = {
+  title: "",
+  imageSrc: "",
+  isModalOpen: false,
+  onRequestClose: () => {},
 };
 
 export default Modal;
