@@ -17,7 +17,7 @@ export default class InvoiceService {
         promise = this.renderPaymentRequest();
       }
       return promise.then(() => {
-        return this.watchPayment();
+        return this.watchInvoice();
       });
     });
   }
@@ -28,7 +28,7 @@ export default class InvoiceService {
         return reject(new Error('No paymentRequestRenderer configured'));
       }
       return resolve(this.paymentRequestRenderer(this.invoice))
-    }
+    })
   }
 
   payWithWebln() {
@@ -62,12 +62,13 @@ export default class InvoiceService {
 
     return new Promise((resolve, reject) => {
       this.invoiceWatcher = window.setInterval(() => {
-        this._fetch(`${this.baseURL}/v1/invoice/${this.invoice.payment_hash}`)
+        this._fetch(`${this.baseURL}/v1/invoice/${this.invoice.identifier}`)
           .then((invoice) => {
             if (invoice.settled) {
-              this.invoice.settled = true;
+              // replace the locally stored invoice with the settled server response
+              this.invoice = invoice;
               this.stopWatchingInvoice();
-              resolve(this.invoice);
+              resolve(invoice);
             }
           });
       }, 2000);
@@ -78,9 +79,9 @@ export default class InvoiceService {
     this.invoiceWatcher = null;
   }
 
-  _fetch(url, args) {
+  _fetch(url, args = {}) {
     if(!args.headers) {
-      arg.headers = {};
+      args.headers = {};
     }
     args.headers['Api-Token'] = this.apiToken;
     return fetch(url, args).then((response) => {
