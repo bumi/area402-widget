@@ -2,6 +2,7 @@ export default class InvoiceService {
 
   constructor(options) {
     this.baseURL = options.baseURL;
+    this.apiToken = options.apiToken;
     this.value = parseInt(options.value || 0);
     this.memo = options.memo || '';
     this.paymentRequestRenderer = options.paymentRequestRenderer;
@@ -78,6 +79,10 @@ export default class InvoiceService {
   }
 
   _fetch(url, args) {
+    if(!args.headers) {
+      arg.headers = {};
+    }
+    args.headers['Api-Token'] = this.apiToken;
     return fetch(url, args).then((response) => {
       if (response.ok) {
         return response.json();
