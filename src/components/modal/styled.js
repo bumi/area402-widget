@@ -8,37 +8,33 @@ export const Backdrop = styled.div`
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 1;
+  z-index: 9;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+`;
+
+export const ModalWrapper = styled.div`
+  width: 40%;
+  height: 400px;
+  display: flex;
+  z-index: 99;
+  background: #fff;
+  margin: 50px auto;
+  border-radius: 6px;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
 `;
 
 export const ModalContainer = styled.div`
-  width: 40%;
-  padding: 15px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  max-width: 100%;
-  background: #fff;
-  margin: 50px auto;
-  border-radius: 5px;
+  padding: 40px;
   align-items: center;
   flex-direction: column;
-`;
-
-export const TitleWrapper = styled.div`
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const StyledImage = styled.img`
-  height: 50px;
-  width: 100px;
-`;
-
-export const Title = styled.h3`
-  font-size: 15px;
+  box-sizing: border-box;
+  justify-content: space-between;
 `;

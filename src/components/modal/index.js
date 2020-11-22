@@ -1,15 +1,9 @@
 import { h } from "preact";
 import { useEffect } from "preact/hooks";
 
-import {
-  Title,
-  Backdrop,
-  StyledImage,
-  TitleWrapper,
-  ModalContainer,
-} from "./styled";
+import { Backdrop, ModalWrapper, ModalContainer } from "./styled";
 
-const Modal = ({ onRequestClose, imageSrc, title, isModalOpen, children }) => {
+const Modal = ({ onRequestClose, isModalOpen, children }) => {
   const onKeyDown = (event) => {
     if (event.keyCode === 27 && isModalOpen) {
       // Close the modal when the Escape key is pressed
@@ -31,21 +25,15 @@ const Modal = ({ onRequestClose, imageSrc, title, isModalOpen, children }) => {
   }, []);
 
   return (
-    <Backdrop onClick={onRequestClose}>
-      <ModalContainer>
-        <TitleWrapper>
-          {imageSrc && <StyledImage src={imageSrc} />}
-          <Title>{title || "402"}</Title>
-        </TitleWrapper>
-        {children}
-      </ModalContainer>
+    <Backdrop>
+      <ModalWrapper>
+        <ModalContainer>{children}</ModalContainer>
+      </ModalWrapper>
     </Backdrop>
   );
 };
 
 Modal.defaultProps = {
-  title: "",
-  imageSrc: "",
   isModalOpen: false,
   onRequestClose: () => {},
 };
