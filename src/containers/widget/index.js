@@ -17,12 +17,10 @@ const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
-  }
+  };
+
   const openModal = () => {
     setModalIsOpen(true);
-  }
-  const toggleModalVisibility = () => {
-    setModalIsOpen(!isModalOpen);
   };
 
   const handleDonateClick = () => {
@@ -60,11 +58,10 @@ const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
   return (
     <WidgetWrapper>
       <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
-        <Button buttonClick={toggleModalVisibility} />
+        <Button buttonClick={openModal} />
+
         {isModalOpen && (
-          <Modal onRequestClose={closeModal}>
-            {renderModalContent()}
-          </Modal>
+          <Modal onRequestClose={closeModal}>{renderModalContent()}</Modal>
         )}
       </CacheProvider>
     </WidgetWrapper>
