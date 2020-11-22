@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 30px;
+  width: fit-content;
   padding: 10px 15px;
   transition: all 100ms ease-out;
 

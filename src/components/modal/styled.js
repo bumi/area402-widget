@@ -8,14 +8,33 @@ export const Backdrop = styled.div`
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 1;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+`;
+
+export const ModalWrapper = styled.div`
+  width: 40%;
+  height: 400px;
+  display: flex;
+  z-index: 99;
+  background: #fff;
+  margin: 50px auto;
+  border-radius: 6px;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
 `;
 
 export const ModalContainer = styled.div`
-  background: #fff;
-  border-radius: 5px;
-  max-width: 100%;
-  margin: 50px auto;
-  padding: 15px;
-  width: 40%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 40px;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
 `;
