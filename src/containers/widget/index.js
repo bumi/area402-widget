@@ -8,20 +8,46 @@ import { WidgetWrapper } from "../../helpers/widget-wrapper";
 import Modal from "../../components/modal";
 import Button from "../../components/button";
 
+import DonateScreen from "../../views/donate-screen";
 import WelcomeScreen from "../../views/welcome-screen";
 
-const Widget = ({ showModal, screenName, imageSrc, title }) => {
+const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
   const [isModalOpen, setModalIsOpen] = useState(showModal);
+  const [currentScreen, setCurrentScreen] = useState(screenName);
 
   const toggleModalVisibility = () => {
     setModalIsOpen(!isModalOpen);
   };
 
+  const handleDonateClick = () => {
+    setCurrentScreen("donate-screen");
+  };
+
+  const handleDonateNextClick = (value) => {
+    console.log("value selected: ", value);
+  };
+
   const renderModalContent = () => {
-    switch (screenName) {
+    switch (currentScreen) {
       case "welcome-screen":
+        return (
+          <WelcomeScreen
+            imageSrc={imageSrc}
+            title={widgetTitle}
+            onDonateClick={handleDonateClick}
+            onRequestClose={toggleModalVisibility}
+          />
+        );
+      case "donate-screen":
+        return (
+          <DonateScreen
+            title={widgetTitle}
+            onNextClick={handleDonateNextClick}
+            onRequestClose={toggleModalVisibility}
+          />
+        );
       default:
-        return <WelcomeScreen onRequestClose={toggleModalVisibility} />;
+        null;
     }
   };
 
@@ -31,8 +57,6 @@ const Widget = ({ showModal, screenName, imageSrc, title }) => {
         <Button buttonClick={toggleModalVisibility} />
         {isModalOpen && (
           <Modal
-            title={title}
-            imageSrc={imageSrc}
             isModalOpen={isModalOpen}
             onRequestClose={toggleModalVisibility}
           >
@@ -45,8 +69,8 @@ const Widget = ({ showModal, screenName, imageSrc, title }) => {
 };
 
 Widget.defaultProps = {
-  title: "",
   imageSrc: "",
+  widgetTitle: "",
   showModal: false,
   screenName: "welcome-screen",
 };
