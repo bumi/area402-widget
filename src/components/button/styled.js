@@ -10,7 +10,6 @@ export const StyledButton = styled.button`
   font-weight: 600;
   width: fit-content;
   padding: 10px 15px;
-  margin-bottom: 30px;
   transition: all 100ms ease-out;
 
   &:hover {
