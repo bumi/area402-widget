@@ -15,6 +15,12 @@ const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
   const [isModalOpen, setModalIsOpen] = useState(showModal);
   const [currentScreen, setCurrentScreen] = useState(screenName);
 
+  const closeModal = () => {
+    setModalIsOpen(false);
+  }
+  const openModal = () => {
+    setModalIsOpen(true);
+  }
   const toggleModalVisibility = () => {
     setModalIsOpen(!isModalOpen);
   };
@@ -35,7 +41,7 @@ const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
             imageSrc={imageSrc}
             title={widgetTitle}
             onDonateClick={handleDonateClick}
-            onRequestClose={toggleModalVisibility}
+            onRequestClose={closeModal}
           />
         );
       case "donate-screen":
@@ -43,7 +49,7 @@ const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
           <DonateScreen
             title={widgetTitle}
             onNextClick={handleDonateNextClick}
-            onRequestClose={toggleModalVisibility}
+            onRequestClose={closeModal}
           />
         );
       default:
@@ -56,10 +62,7 @@ const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
       <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
         <Button buttonClick={toggleModalVisibility} />
         {isModalOpen && (
-          <Modal
-            isModalOpen={isModalOpen}
-            onRequestClose={toggleModalVisibility}
-          >
+          <Modal onRequestClose={closeModal}>
             {renderModalContent()}
           </Modal>
         )}
