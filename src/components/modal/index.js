@@ -3,9 +3,9 @@ import { useEffect } from "preact/hooks";
 
 import { Backdrop, ModalWrapper, ModalContainer } from "./styled";
 
-const Modal = ({ onRequestClose, isModalOpen, children }) => {
+const Modal = ({ onRequestClose, children }) => {
   const onKeyDown = (event) => {
-    if (event.keyCode === 27 && isModalOpen) {
+    if (event.keyCode === 27) {
       // Close the modal when the Escape key is pressed
       onRequestClose();
     }
@@ -34,7 +34,6 @@ const Modal = ({ onRequestClose, isModalOpen, children }) => {
 };
 
 Modal.defaultProps = {
-  isModalOpen: false,
   onRequestClose: () => {},
 };
 
