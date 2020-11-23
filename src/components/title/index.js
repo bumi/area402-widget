@@ -5,8 +5,6 @@ import { StyledH3, HiddenBlock, TitleWrapper } from "./styled";
 
 const Title = ({ title, onRequestClose }) => (
   <TitleWrapper>
-    <HiddenBlock>asdkas</HiddenBlock>
-
     <StyledH3>{title}</StyledH3>
 
     <span onClick={onRequestClose}>
