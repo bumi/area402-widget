@@ -11,7 +11,13 @@ import WelcomeScreen from "../../views/welcome-screen";
 import { StyledCache } from "../../helpers/styled-cache";
 import { WidgetWrapper } from "../../helpers/widget-wrapper";
 
-const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
+const Widget = ({
+  imageSrc,
+  showModal,
+  screenName,
+  widgetTitle,
+  welcomeMessage,
+}) => {
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [isModalOpen, setModalIsOpen] = useState(showModal);
   const [currentScreen, setCurrentScreen] = useState(screenName);
@@ -31,16 +37,17 @@ const Widget = ({ showModal, screenName, imageSrc, widgetTitle }) => {
           <WelcomeScreen
             imageSrc={imageSrc}
             title={widgetTitle}
-            onDonateClick={handleDonateClick}
+            message={welcomeMessage}
             onRequestClose={closeModal}
+            onDonateClick={handleDonateClick}
           />
         );
       case "donate-screen":
         return (
           <DonateScreen
             title={widgetTitle}
-            onNextClick={handleDonateNextClick}
             onRequestClose={closeModal}
+            onNextClick={handleDonateNextClick}
           />
         );
       default:
