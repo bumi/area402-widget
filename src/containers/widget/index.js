@@ -5,16 +5,22 @@ import { useState, useEffect } from "preact/hooks";
 import Modal from "../../components/modal";
 import Button from "../../components/button";
 
+import InvoiceService from "../../services/invoice";
+
 import DonateScreen from "../../views/donate-screen";
 import WelcomeScreen from "../../views/welcome-screen";
 
 import { StyledCache } from "../../helpers/styled-cache";
 import { WidgetWrapper } from "../../helpers/widget-wrapper";
 
+const API_TOKEN = "L7bRwjnMTvKpLgRhzScqi5Y8";
+const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
+
 const Widget = ({
   currency,
   imageSrc,
   showModal,
+  apiBaseUrl,
   screenName,
   widgetTitle,
   welcomeMessage,
@@ -34,7 +40,24 @@ const Widget = ({
 
   const handleDonateClick = () => setCurrentScreen("donate-screen");
 
-  const handleDonateNextClick = (value) => setSelectedAmount(value);
+  const paymentPagetRenderer = (invoiceDetails) => {
+    console.log("invoiceDetails", invoiceDetails);
+    // setCurrentScreen("paymeny-screen");
+  };
+
+  const handleDonateNextClick = async (value) => {
+    setSelectedAmount(value);
+
+    const invoiceOptions = {
+      value,
+      apiToken: API_TOKEN,
+      baseURL: apiBaseUrl,
+      paymentRequestRenderer: paymentPagetRenderer,
+    };
+    const invoiceService = new InvoiceService(invoiceOptions);
+
+    invoiceService.requestPayment();
+  };
 
   const renderModalContent = () => {
     switch (currentScreen) {
@@ -83,6 +106,7 @@ Widget.defaultProps = {
   showModal: false,
   paymentOptions: [],
   screenName: "welcome-screen",
+  apiBaseUrl: DEFAULT_API_BASE_URL,
 };
 
 export default Widget;
