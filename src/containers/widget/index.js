@@ -1,6 +1,6 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
 import { CacheProvider } from "@emotion/react";
+import { useState, useEffect } from "preact/hooks";
 
 import Modal from "../../components/modal";
 import Button from "../../components/button";
@@ -12,23 +12,29 @@ import { StyledCache } from "../../helpers/styled-cache";
 import { WidgetWrapper } from "../../helpers/widget-wrapper";
 
 const Widget = ({
+  currency,
   imageSrc,
   showModal,
   screenName,
   widgetTitle,
   welcomeMessage,
+  paymentOptions,
 }) => {
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [isModalOpen, setModalIsOpen] = useState(showModal);
   const [currentScreen, setCurrentScreen] = useState(screenName);
 
+  useEffect(() => {
+    console.log("selected amount", selectedAmount);
+  }, [selectedAmount]);
+
   const openModal = () => setModalIsOpen(true);
 
   const closeModal = () => setModalIsOpen(false);
 
-  const handleDonateNextClick = (value) => setSelectedAmount(value);
-
   const handleDonateClick = () => setCurrentScreen("donate-screen");
+
+  const handleDonateNextClick = (value) => setSelectedAmount(value);
 
   const renderModalContent = () => {
     switch (currentScreen) {
@@ -46,7 +52,9 @@ const Widget = ({
         return (
           <DonateScreen
             title={widgetTitle}
+            currency={currency}
             onRequestClose={closeModal}
+            currencyOptions={paymentOptions}
             onNextClick={handleDonateNextClick}
           />
         );
