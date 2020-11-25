@@ -14,28 +14,19 @@ import {
   ContentWrapper,
 } from "./styled";
 
-const DONATION_AMOUNTS = [
-  {
-    text: "1€",
-    value: "1",
-  },
-  {
-    text: "2€",
-    value: "2",
-  },
-  {
-    text: "5€",
-    value: "5",
-  },
-  {
-    text: "10€",
-    value: "10",
-  },
-];
+const DEFAULT_PAYMENT_OPTIONS = [2, 5, 10];
 
-const DonateScreen = ({ onRequestClose, onNextClick, title }) => {
+const DonateScreen = ({
+  title,
+  currency,
+  onNextClick,
+  onRequestClose,
+  currencyOptions,
+}) => {
   const [inputAmount, setInputAmount] = useState("");
   const [donationAmount, setDonationAmount] = useState("");
+  const paymentOptions =
+    currencyOptions.length > 0 ? currencyOptions : DEFAULT_PAYMENT_OPTIONS;
 
   const handleCustomInput = (e) => {
     setInputAmount(e.target.value ? e.target.value : "");
@@ -57,13 +48,13 @@ const DonateScreen = ({ onRequestClose, onNextClick, title }) => {
 
         <Content>
           <TagsWrapper>
-            {DONATION_AMOUNTS.map((tag, index) => (
+            {paymentOptions.map((value, index) => (
               <TagItem
                 key={index}
-                onClick={() => onTagSelect(tag.value)}
-                selected={tag.value === donationAmount}
+                onClick={() => onTagSelect(value)}
+                selected={value === donationAmount}
               >
-                {tag.text}
+                {`${value} ${currency}`}
               </TagItem>
             ))}
           </TagsWrapper>
