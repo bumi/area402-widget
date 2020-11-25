@@ -78,8 +78,10 @@ const Widget = ({
 
 Widget.defaultProps = {
   imageSrc: "",
+  currency: "€",
   widgetTitle: "",
   showModal: false,
+  paymentOptions: [],
   screenName: "welcome-screen",
 };
 
