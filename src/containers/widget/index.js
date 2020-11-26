@@ -9,6 +9,7 @@ import InvoiceService from "../../services/invoice";
 
 import DonateScreen from "../../views/donate-screen";
 import WelcomeScreen from "../../views/welcome-screen";
+import PaymentScreen from "../../views/payment-screen";
 
 import { StyledCache } from "../../helpers/styled-cache";
 import { WidgetWrapper } from "../../helpers/widget-wrapper";
@@ -28,6 +29,7 @@ const Widget = ({
 }) => {
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [isModalOpen, setModalIsOpen] = useState(showModal);
+  const [invoiceDetails, setInvoiceDetails] = useState(null);
   const [currentScreen, setCurrentScreen] = useState(screenName);
 
   useEffect(() => {
@@ -40,9 +42,9 @@ const Widget = ({
 
   const handleDonateClick = () => setCurrentScreen("donate-screen");
 
-  const paymentPagetRenderer = (invoiceDetails) => {
-    console.log("invoiceDetails", invoiceDetails);
-    // setCurrentScreen("paymeny-screen");
+  const paymentPagetRenderer = (invoice) => {
+    setInvoiceDetails(invoice);
+    setCurrentScreen("payment-screen");
   };
 
   const handleDonateNextClick = async (value) => {
@@ -81,6 +83,8 @@ const Widget = ({
             onNextClick={handleDonateNextClick}
           />
         );
+      case "payment-screen":
+        return <PaymentScreen {...invoiceDetails} />;
       default:
         null;
     }
