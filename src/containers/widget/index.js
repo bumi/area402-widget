@@ -87,7 +87,7 @@ const Widget = ({
   };
 
   return (
-    <WidgetWrapper>
+    <WidgetWrapper ref={(component) => (window.widget = component)}>
       <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
         <Button buttonClick={openModal} />
 
