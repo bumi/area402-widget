@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import Close from "../close";
+import Close from "../icons/close";
 import { StyledH3, HiddenBlock, TitleWrapper } from "./styled";
 
 const Title = ({ title, onRequestClose }) => (
