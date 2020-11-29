@@ -15,7 +15,7 @@ import ThankyouScreen from "../../views/thankyou-screen";
 import { StyledCache } from "../../helpers/styled-cache";
 import { WidgetWrapper } from "../../helpers/widget-wrapper";
 
-const API_TOKEN = "eo5y87qyshGMBQmLHaiwHQjp";
+const API_TOKEN = "UrLnHR1DKN3eiAXefkT9Lm2R";
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
 
 const Widget = ({
@@ -51,7 +51,6 @@ const Widget = ({
   const handleDonateClick = () => setCurrentScreen("donate-screen");
 
   const paymentPagetRenderer = (invoice) => {
-    console.log(invoice);
     setInvoiceDetails(invoice);
     setCurrentScreen("payment-screen");
   };
@@ -67,7 +66,13 @@ const Widget = ({
     };
     const invoiceService = new InvoiceService(invoiceOptions);
 
-    invoiceService.requestPayment();
+    invoiceService.requestPayment().then((response) => {
+      if (response.settled) {
+        setSelectedAmount(0);
+        setInvoiceDetails(null);
+        setCurrentScreen("thankyou-screen");
+      }
+    });
   };
 
   const handleSubscribeClick = (value = "") => {
