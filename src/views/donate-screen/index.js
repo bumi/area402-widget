@@ -28,6 +28,22 @@ const DonateScreen = ({
   const paymentOptions =
     currencyOptions.length > 0 ? currencyOptions : DEFAULT_PAYMENT_OPTIONS;
 
+  useEffect(() => {
+    return () => {
+      setDefaults();
+    };
+  }, []);
+
+  const setDefaults = () => {
+    setInputAmount("");
+    setDonationAmount("");
+  };
+
+  const handleCloseClick = () => {
+    setDefaults();
+    onRequestClose();
+  };
+
   const handleCustomInput = (e) => {
     setInputAmount(e.target.value ? e.target.value : "");
   };
@@ -41,7 +57,7 @@ const DonateScreen = ({
 
   return (
     <Container>
-      <Title title={title} onRequestClose={onRequestClose} />
+      <Title title={title} onRequestClose={handleCloseClick} />
 
       <ContentWrapper>
         <Subtitle>How much would you like to contribute?</Subtitle>
