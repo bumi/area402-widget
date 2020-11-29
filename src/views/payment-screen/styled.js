@@ -59,12 +59,15 @@ export const ClipboardText = styled.input`
   outline: none;
   color: #3e396b;
   font-size: 12px;
+  overflow: hidden;
   line-height: 16px;
   font-style: normal;
   margin-right: 16px;
   font-weight: normal;
+  white-space: nowrap;
   font-family: Open Sans;
   box-sizing: border-box;
+  text-overflow: ellipsis;
 `;
 
 export const StyledButton = styled.a`

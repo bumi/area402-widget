@@ -23,7 +23,7 @@ const ThankyouScreen = ({ title, onRequestClose, onSubscribeClick }) => {
   }, []);
 
   const handleSubscribeClick = () => {
-    onSubscribeClick();
+    onSubscribeClick(email);
   };
 
   const handleInputOnChange = (ev) => {
