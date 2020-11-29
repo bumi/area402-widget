@@ -10,6 +10,7 @@ import InvoiceService from "../../services/invoice";
 import DonateScreen from "../../views/donate-screen";
 import WelcomeScreen from "../../views/welcome-screen";
 import PaymentScreen from "../../views/payment-screen";
+import ThankyouScreen from "../../views/thankyou-screen";
 
 import { StyledCache } from "../../helpers/styled-cache";
 import { WidgetWrapper } from "../../helpers/widget-wrapper";
@@ -69,6 +70,10 @@ const Widget = ({
     invoiceService.requestPayment();
   };
 
+  const handleSubscribeClick = (value = "") => {
+    console.log("entered email: ", value);
+  };
+
   const renderModalContent = () => {
     switch (currentScreen) {
       case "welcome-screen":
@@ -99,6 +104,14 @@ const Widget = ({
             onRequestClose={closeModal}
             selectedAmount={selectedAmount}
             {...invoiceDetails}
+          />
+        );
+      case "thankyou-screen":
+        return (
+          <ThankyouScreen
+            title={widgetTitle}
+            onRequestClose={closeModal}
+            onSubscribeClick={handleSubscribeClick}
           />
         );
       default:
