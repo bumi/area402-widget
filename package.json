@@ -34,6 +34,7 @@
     "preact-habitat": "^3.3.0",
     "preact-render-to-string": "^5.0.0",
     "preact-router": "^3.2.1",
+    "qrcode.react": "^1.0.0",
     "stylis-plugin-extra-scope": "https://github.com/tpict/stylis-plugin-extra-scope.git#stylis-v4"
   },
   "jest": {
