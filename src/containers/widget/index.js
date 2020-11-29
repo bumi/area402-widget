@@ -14,25 +14,8 @@ import PaymentScreen from "../../views/payment-screen";
 import { StyledCache } from "../../helpers/styled-cache";
 import { WidgetWrapper } from "../../helpers/widget-wrapper";
 
-const API_TOKEN = "ux9EDBaWq7E7GFrUe1EiKBrk";
+const API_TOKEN = "eo5y87qyshGMBQmLHaiwHQjp";
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
-
-const MOCK_RESPONSE = {
-  identifier: "gdef6FAzuzeyZdgMCEKBLWAn",
-  value: 1,
-  memo: "",
-  payment_request: null,
-  r_hash_str: null,
-  amt_paid_sat: null,
-  settled: null,
-  state: null,
-  creation_date: null,
-  expiry: null,
-  qr_code_png:
-    "https://area402.herokuapp.com/v1/invoice/gdef6FAzuzeyZdgMCEKBLWAn.png",
-  qr_code_svg:
-    "https://area402.herokuapp.com/v1/invoice/gdef6FAzuzeyZdgMCEKBLWAn.svg",
-};
 
 const Widget = ({
   currency,
@@ -50,17 +33,24 @@ const Widget = ({
   const [currentScreen, setCurrentScreen] = useState(screenName);
 
   useEffect(() => {
-    console.log("selected amount", selectedAmount);
-  }, [selectedAmount]);
+    return () => setDefaults();
+  }, []);
+
+  const setDefaults = () => {
+    setSelectedAmount(0);
+    setModalIsOpen(false);
+    setInvoiceDetails(null);
+    setCurrentScreen("welcome-screen");
+  };
+
+  const closeModal = () => setDefaults();
 
   const openModal = () => setModalIsOpen(true);
-
-  const closeModal = () => setModalIsOpen(false);
 
   const handleDonateClick = () => setCurrentScreen("donate-screen");
 
   const paymentPagetRenderer = (invoice) => {
-    console.log(JSON.stringify(invoice));
+    console.log(invoice);
     setInvoiceDetails(invoice);
     setCurrentScreen("payment-screen");
   };
@@ -68,17 +58,15 @@ const Widget = ({
   const handleDonateNextClick = (value) => {
     setSelectedAmount(value);
 
-    paymentPagetRenderer(MOCK_RESPONSE);
+    const invoiceOptions = {
+      value,
+      apiToken: API_TOKEN,
+      baseURL: apiBaseUrl,
+      paymentRequestRenderer: paymentPagetRenderer,
+    };
+    const invoiceService = new InvoiceService(invoiceOptions);
 
-    // const invoiceOptions = {
-    //   value,
-    //   apiToken: API_TOKEN,
-    //   baseURL: apiBaseUrl,
-    //   paymentRequestRenderer: paymentPagetRenderer,
-    // };
-    // const invoiceService = new InvoiceService(invoiceOptions);
-
-    // invoiceService.requestPayment();
+    invoiceService.requestPayment();
   };
 
   const renderModalContent = () => {
@@ -110,7 +98,7 @@ const Widget = ({
             currency={currency}
             onRequestClose={closeModal}
             selectedAmount={selectedAmount}
-            {...MOCK_RESPONSE}
+            {...invoiceDetails}
           />
         );
       default:
