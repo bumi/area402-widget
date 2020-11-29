@@ -3,7 +3,7 @@ export default class InvoiceService {
     this.baseURL = options.baseURL;
     this.memo = options.memo || "";
     this.apiToken = options.apiToken;
-    this.value = parseInt(options.value || 0);
+    this.amount = parseInt(options.amount || 0);
     this.paymentRequestRenderer = options.paymentRequestRenderer;
   }
 
@@ -57,7 +57,7 @@ export default class InvoiceService {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ memo: this.memo, value: this.value }),
+      body: JSON.stringify({ memo: this.memo, amount: this.amount }),
     };
     return this._fetch(`${this.baseURL}/v1/invoices`, args).then((invoice) => {
       this.invoice = invoice;

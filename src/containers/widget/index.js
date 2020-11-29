@@ -55,11 +55,11 @@ const Widget = ({
     setCurrentScreen("payment-screen");
   };
 
-  const handleDonateNextClick = (value) => {
-    setSelectedAmount(value);
+  const handleDonateNextClick = (amount_in_cents) => {
+    setSelectedAmount(amount_in_cents);
 
     const invoiceOptions = {
-      value,
+      amount: amount_in_cents,
       apiToken: API_TOKEN,
       baseURL: apiBaseUrl,
       paymentRequestRenderer: paymentPagetRenderer,
