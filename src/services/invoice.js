@@ -15,9 +15,16 @@ export default class InvoiceService {
       } else {
         promise = this.renderPaymentRequest();
       }
-      return promise.then(() => {
-        return this.watchInvoice();
-      });
+
+      // webln (only in master?) has an issue and this promise isn't resolving.
+      // `Uncaught (in promise) TypeError: Cannot read property 'error' of null`
+      // to work around this issue and to make sure we watch for the payment we
+      // simply return the watchInvoice promise directly.
+      // return promise.then(() => {
+      //  return this.watchInvoice();
+      // });
+
+      return this.watchInvoice();
     });
   }
 
@@ -32,10 +39,10 @@ export default class InvoiceService {
 
   payWithWebln() {
     if (!window.webln.isEnabled) {
-      window.webln
+      return window.webln
         .enable()
-        .then((webln) => {
-          return webln.sendPayment(this.invoice.payment_request);
+        .then(() => {
+          return window.webln.sendPayment(this.invoice.payment_request);
         })
         .catch((e) => {
           return this.renderPaymentRequest();
