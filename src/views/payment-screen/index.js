@@ -18,7 +18,6 @@ import {
 const PaymentScreen = ({
   title,
   currency,
-  identifier,
   onRequestClose,
   selectedAmount,
   payment_request,
@@ -48,10 +47,10 @@ const PaymentScreen = ({
             size={90}
             level={"L"}
             renderAs={"svg"}
-            value={identifier}
             bgColor={"#ffffff"}
             fgColor={"#000000"}
             includeMargin={false}
+            value={payment_request}
           />
 
           <ClipboardWrapper>
@@ -59,7 +58,7 @@ const PaymentScreen = ({
               readOnly
               type="text"
               id="lightningUrl"
-              value={identifier}
+              value={payment_request}
             />
 
             <span onClick={copyToClipboard}>
