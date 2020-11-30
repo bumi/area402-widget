@@ -21,6 +21,7 @@ const PaymentScreen = ({
   onRequestClose,
   selectedAmount,
   payment_request,
+  formatted_amount,
 }) => {
   const copyToClipboard = () => {
     var copyText = document.getElementById("lightningUrl");
@@ -39,7 +40,7 @@ const PaymentScreen = ({
       <ContentWrapper>
         <Subtitle>
           Pay with lightning:{"  "}
-          <AmountPlaceholder>{`${selectedAmount}${currency}`}</AmountPlaceholder>
+          <AmountPlaceholder>{formatted_amount}</AmountPlaceholder>
         </Subtitle>
 
         <Content>
