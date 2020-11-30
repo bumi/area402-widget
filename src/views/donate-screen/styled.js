@@ -57,7 +57,7 @@ export const TagItem = styled.span(
       background-color: #f6f2ff;
     }
 
-    &:first-child {
+    &:first-of-type {
       margin-left: 0;
     }
 

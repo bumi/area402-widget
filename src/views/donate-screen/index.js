@@ -28,6 +28,22 @@ const DonateScreen = ({
   const paymentOptions =
     currencyOptions.length > 0 ? currencyOptions : DEFAULT_PAYMENT_OPTIONS;
 
+  useEffect(() => {
+    return () => {
+      setDefaults();
+    };
+  }, []);
+
+  const setDefaults = () => {
+    setInputAmount("");
+    setDonationAmount("");
+  };
+
+  const handleCloseClick = () => {
+    setDefaults();
+    onRequestClose();
+  };
+
   const handleCustomInput = (e) => {
     setInputAmount(e.target.value ? e.target.value : "");
   };
@@ -35,13 +51,15 @@ const DonateScreen = ({
   const onTagSelect = (val) => setDonationAmount(val);
 
   const handleNextClick = () => {
-    const value = parseInt(donationAmount || inputAmount, 10);
-    onNextClick(value);
+    const value = donationAmount || inputAmount;
+    const cents = parseFloat(value) * 100;
+    const amount_in_cents = parseInt(cents, 10);
+    onNextClick(amount_in_cents);
   };
 
   return (
     <Container>
-      <Title title={title} onRequestClose={onRequestClose} />
+      <Title title={title} onRequestClose={handleCloseClick} />
 
       <ContentWrapper>
         <Subtitle>How much would you like to contribute?</Subtitle>

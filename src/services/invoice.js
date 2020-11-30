@@ -3,7 +3,7 @@ export default class InvoiceService {
     this.baseURL = options.baseURL;
     this.memo = options.memo || "";
     this.apiToken = options.apiToken;
-    this.value = parseInt(options.value || 0);
+    this.amount = parseInt(options.amount || 0);
     this.paymentRequestRenderer = options.paymentRequestRenderer;
   }
 
@@ -15,9 +15,16 @@ export default class InvoiceService {
       } else {
         promise = this.renderPaymentRequest();
       }
-      return promise.then(() => {
-        return this.watchInvoice();
-      });
+
+      // webln (only in master?) has an issue and this promise isn't resolving.
+      // `Uncaught (in promise) TypeError: Cannot read property 'error' of null`
+      // to work around this issue and to make sure we watch for the payment we
+      // simply return the watchInvoice promise directly.
+      // return promise.then(() => {
+      //  return this.watchInvoice();
+      // });
+
+      return this.watchInvoice();
     });
   }
 
@@ -32,10 +39,10 @@ export default class InvoiceService {
 
   payWithWebln() {
     if (!window.webln.isEnabled) {
-      window.webln
+      return window.webln
         .enable()
-        .then((webln) => {
-          return webln.sendPayment(this.invoice.payment_request);
+        .then(() => {
+          return window.webln.sendPayment(this.invoice.payment_request);
         })
         .catch((e) => {
           return this.renderPaymentRequest();
@@ -50,7 +57,7 @@ export default class InvoiceService {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ memo: this.memo, value: this.value }),
+      body: JSON.stringify({ memo: this.memo, amount: this.amount }),
     };
     return this._fetch(`${this.baseURL}/v1/invoices`, args).then((invoice) => {
       this.invoice = invoice;
