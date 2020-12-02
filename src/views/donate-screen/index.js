@@ -48,10 +48,13 @@ const DonateScreen = ({
     setInputAmount(e.target.value ? e.target.value : "");
   };
 
-  const onTagSelect = (val) => setDonationAmount(val);
+  const onTagSelect = (val) => {
+    setDonationAmount(val);
+    handleNextClick(val);
+  };
 
-  const handleNextClick = () => {
-    const value = donationAmount || inputAmount;
+  const handleNextClick = (val) => {
+    const value = val || donationAmount || inputAmount;
     const cents = parseFloat(value) * 100;
     const amount_in_cents = parseInt(cents, 10);
     onNextClick(amount_in_cents);
