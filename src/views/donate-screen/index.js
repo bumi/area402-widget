@@ -46,6 +46,7 @@ const DonateScreen = ({
 
   const handleCustomInput = (e) => {
     setInputAmount(e.target.value ? e.target.value : "");
+    setDonationAmount("");
   };
 
   const onTagSelect = (val) => {
