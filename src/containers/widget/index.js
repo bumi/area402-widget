@@ -27,6 +27,7 @@ const Widget = ({
   widgetTitle,
   welcomeMessage,
   paymentOptions,
+  enableEmailSubscription,
 }) => {
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [isModalOpen, setModalIsOpen] = useState(showModal);
@@ -117,6 +118,7 @@ const Widget = ({
             title={widgetTitle}
             onRequestClose={closeModal}
             onSubscribeClick={handleSubscribeClick}
+            enableEmailSubscription={enableEmailSubscription}
           />
         );
       default:
@@ -144,6 +146,7 @@ Widget.defaultProps = {
   showModal: false,
   paymentOptions: [],
   screenName: "welcome-screen",
+  enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
 };
 
