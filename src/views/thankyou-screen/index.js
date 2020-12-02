@@ -15,7 +15,12 @@ import {
   ContentWrapper,
 } from "./styled";
 
-const ThankyouScreen = ({ title, onRequestClose, onSubscribeClick }) => {
+const ThankyouScreen = ({
+  title,
+  onRequestClose,
+  onSubscribeClick,
+  enableEmailSubscription,
+}) => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -47,19 +52,23 @@ const ThankyouScreen = ({ title, onRequestClose, onSubscribeClick }) => {
             Enter your email and we will send you a monthly invoice.
           </ThankyouNote>
 
-          <EmailWrapper>
-            <StyledSpan>Email:</StyledSpan>
+          {enableEmailSubscription && (
+            <EmailWrapper>
+              <StyledSpan>Email:</StyledSpan>
 
-            <EmailInput
-              type="text"
-              value={email}
-              onChange={handleInputOnChange}
-            />
-          </EmailWrapper>
+              <EmailInput
+                type="text"
+                value={email}
+                onChange={handleInputOnChange}
+              />
+            </EmailWrapper>
+          )}
         </Content>
       </ContentWrapper>
 
-      <Button buttonClick={handleSubscribeClick} btnText="Subscribe" />
+      {enableEmailSubscription && (
+        <Button buttonClick={handleSubscribeClick} btnText="Subscribe" />
+      )}
     </Container>
   );
 };
