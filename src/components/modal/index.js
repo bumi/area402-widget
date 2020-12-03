@@ -1,9 +1,10 @@
 import { h } from "preact";
 import { useEffect } from "preact/hooks";
 
+import Title from "../title";
 import { Backdrop, ModalWrapper, ModalContainer } from "./styled";
 
-const Modal = ({ onRequestClose, children }) => {
+const Modal = ({ onRequestClose, children, title }) => {
   const onKeyDown = (event) => {
     if (event.keyCode === 27) {
       // Close the modal when the Escape key is pressed
@@ -27,7 +28,11 @@ const Modal = ({ onRequestClose, children }) => {
   return (
     <Backdrop>
       <ModalWrapper>
-        <ModalContainer>{children}</ModalContainer>
+        <ModalContainer>
+          <Title title={title} onRequestClose={onRequestClose} />
+
+          {children}
+        </ModalContainer>
       </ModalWrapper>
     </Backdrop>
   );
