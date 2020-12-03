@@ -1,7 +1,6 @@
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
-import Title from "../../components/title";
 import Button from "../../components/button";
 import ThankyouIcon from "../../components/icons/thankyou";
 import {
@@ -15,12 +14,7 @@ import {
   ContentWrapper,
 } from "./styled";
 
-const ThankyouScreen = ({
-  title,
-  onRequestClose,
-  onSubscribeClick,
-  enableEmailSubscription,
-}) => {
+const ThankyouScreen = ({ onSubscribeClick, enableEmailSubscription }) => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -39,8 +33,6 @@ const ThankyouScreen = ({
 
   return (
     <Container>
-      <Title title={title} onRequestClose={onRequestClose} />
-
       <ContentWrapper>
         <Subtitle>Thank you for your support</Subtitle>
 
@@ -74,7 +66,6 @@ const ThankyouScreen = ({
 };
 
 ThankyouScreen.defaultProps = {
-  onRequestClose: () => {},
   onSubscribeClick: () => {},
 };
 

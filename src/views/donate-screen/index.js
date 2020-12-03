@@ -1,7 +1,6 @@
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
-import Title from "../../components/title";
 import Button from "../../components/button";
 
 import {
@@ -17,7 +16,6 @@ import {
 const DEFAULT_PAYMENT_OPTIONS = [2, 5, 10];
 
 const DonateScreen = ({
-  title,
   currency,
   onNextClick,
   onRequestClose,
@@ -39,6 +37,7 @@ const DonateScreen = ({
     setDonationAmount("");
   };
 
+  // Think how to clear this
   const handleCloseClick = () => {
     setDefaults();
     onRequestClose();
@@ -63,8 +62,6 @@ const DonateScreen = ({
 
   return (
     <Container>
-      <Title title={title} onRequestClose={handleCloseClick} />
-
       <ContentWrapper>
         <Subtitle>How much would you like to contribute?</Subtitle>
 
