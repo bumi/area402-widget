@@ -38,7 +38,6 @@ export const ClipboardText = styled.input`
   margin-right: 16px;
   font-weight: normal;
   white-space: nowrap;
-  font-family: Open Sans;
   text-overflow: ellipsis;
 `;
 
@@ -55,7 +54,6 @@ export const Button = styled.a`
   padding: 10px 15px;
   border-radius: 50px;
   text-decoration: none;
-  font-family: Open Sans;
   transition: all 100ms ease-out;
 
   &:hover {
@@ -65,7 +63,6 @@ export const Button = styled.a`
 `;
 
 export const CountdownText = styled.div`
-  font-family: Open Sans;
   color: #3e396b;
   margin: 14px 0;
   font-size: 10px;
