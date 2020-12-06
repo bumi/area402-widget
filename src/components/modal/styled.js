@@ -21,7 +21,6 @@ export const ModalWrapper = styled.div`
   display: flex;
   z-index: 99;
   background: #fff;
-  margin: 50px auto;
   border-radius: 6px;
   align-items: center;
   flex-direction: column;
@@ -32,7 +31,6 @@ export const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 40px;
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;

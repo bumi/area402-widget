@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  padding: 0 40px 40px;
   flex-direction: column;
   box-sizing: border-box;
 `;
@@ -13,23 +14,25 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
-  padding: 10px;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
 `;
 
 export const Content = styled.div`
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
   flex: 1;
   width: 100%;
   font-size: 16px;
-  padding-top: 16px;
 `;
 
 export const Subtitle = styled.h4`
   font-size: 20px;
-  padding-top: 20px;
+  box-sizing: border-box;
 `;

@@ -1,19 +1,65 @@
 import { h } from "preact";
 import QRCode from "qrcode.react";
+import { Line } from "rc-progress";
+import { useEffect, useState } from "preact/hooks";
 
-import Copy from "../../components/icons/copy";
 import {
+  Button,
   Content,
   Subtitle,
   Container,
-  StyledButton,
   ClipboardText,
+  CountdownText,
   ContentWrapper,
   ClipboardWrapper,
   AmountPlaceholder,
 } from "./styled";
+import Copy from "../../components/icons/copy";
+import { secondsToHms } from "../../utils/helper";
 
-const PaymentScreen = ({ payment_request, formatted_amount }) => {
+const PaymentScreen = ({ payment_request, formatted_amount, expiry }) => {
+  let timer = 0;
+  const [remainingPercent, setRemainingPercent] = useState(0);
+  const [expiryInSeconds, setExpiryInSeconds] = useState(expiry);
+  const [countdownTime, setCountdownTime] = useState(secondsToHms(expiry));
+
+  useEffect(() => {
+    startTimer();
+
+    return () => clearInterval(timer);
+  }, [expiryInSeconds]);
+
+  useEffect(() => {
+    console.log(countdownTime);
+  }, [countdownTime]);
+
+  const startTimer = () => {
+    if (timer == 0 && expiryInSeconds > 0) {
+      timer = setInterval(countDown, 1000);
+    }
+  };
+
+  const updatePercentage = (counter) => {
+    const difference = expiry - counter;
+
+    setRemainingPercent((difference / expiry) * 100);
+  };
+
+  const countDown = () => {
+    // Remove one second, set state so a re-render happens.
+    let seconds = expiryInSeconds - 1;
+
+    updatePercentage(seconds);
+
+    setExpiryInSeconds(seconds);
+    setCountdownTime(secondsToHms(seconds));
+
+    // Check if we're at zero.
+    if (seconds == 0) {
+      return;
+    }
+  };
+
   const copyToClipboard = () => {
     var copyText = document.getElementById("lightningUrl");
 
@@ -58,9 +104,17 @@ const PaymentScreen = ({ payment_request, formatted_amount }) => {
         </Content>
       </ContentWrapper>
 
-      <StyledButton href={`lightning:${payment_request}`}>
-        Open Wallet
-      </StyledButton>
+      <Button href={`lightning:${payment_request}`}>Open Wallet</Button>
+
+      <CountdownText>{`${countdownTime.minutes} min ${countdownTime.seconds} sec left`}</CountdownText>
+
+      <Line
+        percent={remainingPercent}
+        trailWidth="1"
+        strokeWidth="1"
+        trailColor="#91A0FD"
+        strokeColor="#4761FB"
+      />
     </Container>
   );
 };

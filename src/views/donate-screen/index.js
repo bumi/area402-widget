@@ -1,17 +1,14 @@
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
-import Button from "../../components/button";
-
 import {
-  TagItem,
   Content,
   Subtitle,
   Container,
-  CustomInput,
-  TagsWrapper,
   ContentWrapper,
-} from "./styled";
+} from "../../utils/common-styles";
+import Button from "../../components/button";
+import { TagItem, CustomInput, TagsWrapper } from "./styled";
 
 const DEFAULT_PAYMENT_OPTIONS = [2, 5, 10];
 

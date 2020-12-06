@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 export const TitleWrapper = styled.div`
   width: 100%;
   display: flex;
+  padding: 40px;
   align-items: center;
+  box-sizing: border-box;
   justify-content: space-between;
 `;
 

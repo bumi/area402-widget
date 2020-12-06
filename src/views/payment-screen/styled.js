@@ -1,41 +1,16 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  box-sizing: border-box;
-`;
+import { Container as StyledContainer } from "../../utils/common-styles";
 
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  width: 100%;
-  padding: 10px;
-  align-items: center;
-  flex-direction: column;
-  box-sizing: border-box;
-  justify-content: center;
-`;
+export {
+  Content,
+  Subtitle,
+  ContentWrapper,
+  Container as StyledContainer,
+} from "../../utils/common-styles";
 
-export const Content = styled.div`
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  flex-direction: column;
-  justify-content: space-around;
-  flex: 1;
-  width: 100%;
-  font-size: 16px;
-  padding: 4px 4px 10px 4px;
-`;
-
-export const Subtitle = styled.h4`
-  font-size: 20px;
-  padding-top: 20px;
-  box-sizing: border-box;
+export const Container = styled(StyledContainer)`
+  padding: 0;
 `;
 
 export const AmountPlaceholder = styled.span`
@@ -45,7 +20,7 @@ export const AmountPlaceholder = styled.span`
 
 export const ClipboardWrapper = styled.div`
   display: flex;
-  margin-top: 6px;
+  margin-top: 10px;
   padding: 6px 16px;
   background: #ffffff;
   border-radius: 30px;
@@ -70,7 +45,7 @@ export const ClipboardText = styled.input`
   text-overflow: ellipsis;
 `;
 
-export const StyledButton = styled.a`
+export const Button = styled.a`
   background: #8c54ff;
   border: 0;
   color: #fff;
@@ -83,10 +58,23 @@ export const StyledButton = styled.a`
   padding: 10px 15px;
   border-radius: 50px;
   text-decoration: none;
+  font-family: Open Sans;
   transition: all 100ms ease-out;
 
   &:hover {
     background: #682ede;
     transform: scale(1.05);
   }
+`;
+
+export const CountdownText = styled.div`
+  font-family: Open Sans;
+  color: #3e396b;
+  margin: 14px 0;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: 0em;
 `;
