@@ -1,13 +1,13 @@
 export default class InvoiceService {
   constructor(options) {
-    this.baseURL = options.baseURL;
-    this.memo = options.memo || "";
+    this.apiBaseUrl = options.apiBaseUrl;
     this.apiToken = options.apiToken;
-    this.amount = parseInt(options.amount || 0);
     this.paymentRequestRenderer = options.paymentRequestRenderer;
   }
 
-  requestPayment() {
+  requestPayment(invoiceOptions) {
+    this.memo = invoiceOptions.memo || "";
+    this.amount = parseInt(invoiceOptions.amount || 0);
     return this.newInvoice().then((invoice) => {
       let promise;
       if (typeof window.webln !== "undefined") {
@@ -59,21 +59,21 @@ export default class InvoiceService {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ memo: this.memo, amount: this.amount }),
     };
-    return this._fetch(`${this.baseURL}/v1/invoices`, args).then((invoice) => {
+    return this._fetch(`${this.apiBaseUrl}/v1/invoices`, args).then((invoice) => {
       this.invoice = invoice;
       return invoice;
     });
   }
 
   watchInvoice() {
-    if (this.invoiceWatcher) {
-      window.clearInterval(this.invoiceWatcher);
+    if (window.__a402invoiceWatcher) {
+      window.clearInterval(window.__a402invoiceWatcher);
     }
 
     return new Promise((resolve, reject) => {
-      this.invoiceWatcher = window.setInterval(() => {
+      window.__a402invoiceWatcher = window.setInterval(() => {
         this._fetch(
-          `${this.baseURL}/v1/invoice/${this.invoice.identifier}`,
+          `${this.apiBaseUrl}/v1/invoice/${this.invoice.identifier}`,
         ).then((invoice) => {
           if (invoice.settled) {
             // replace the locally stored invoice with the settled server response
@@ -86,8 +86,14 @@ export default class InvoiceService {
     });
   }
   stopWatchingInvoice() {
-    window.clearInterval(this.invoiceWatcher);
-    this.invoiceWatcher = null;
+    window.clearInterval(window.__a402invoiceWatcher);
+    window.__a402invoiceWatcher = null;
+  }
+
+  reset() {
+    this.stopWatchingInvoice();
+    this.memo = null;
+    this.amount = null;
   }
 
   _fetch(url, args = {}) {

@@ -21,7 +21,7 @@ const Widget = ({
   currency,
   imageSrc,
   showModal,
-  token,
+  apiToken,
   apiBaseUrl,
   screenName,
   widgetTitle,
@@ -43,27 +43,24 @@ const Widget = ({
     setCurrentScreen("welcome-screen");
   };
 
-  const closeModal = () => setDefaults();
+  const closeModal = () => {
+    setDefaults();
+    invoiceService.reset();
+  }
 
   const openModal = () => setModalIsOpen(true);
 
   const handleDonateClick = () => setCurrentScreen("donate-screen");
 
-  const paymentPagetRenderer = (invoice) => {
+  const paymentRequestRenderer = (invoice) => {
     setInvoiceDetails(invoice);
     setCurrentScreen("payment-screen");
   };
 
-  const handleDonateNextClick = (amount_in_cents) => {
-    const invoiceOptions = {
-      amount: amount_in_cents,
-      apiToken: token,
-      baseURL: apiBaseUrl,
-      paymentRequestRenderer: paymentPagetRenderer,
-    };
-    const invoiceService = new InvoiceService(invoiceOptions);
+  const invoiceService = new InvoiceService({apiToken, apiBaseUrl, paymentRequestRenderer});
 
-    invoiceService.requestPayment().then((response) => {
+  const handleDonateNextClick = (amountInCents) => {
+    invoiceService.requestPayment({amount: amountInCents}).then((response) => {
       if (response.settled) {
         setInvoiceDetails(null);
         setCurrentScreen("thankyou-screen");
@@ -133,7 +130,7 @@ Widget.defaultProps = {
   screenName: "welcome-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
-  token: "",
+  apiToken: "",
 };
 
 export default Widget;
