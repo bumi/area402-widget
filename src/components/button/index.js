@@ -1,10 +1,11 @@
 import { h } from "preact";
 
+import Spinner from "../spinner";
 import { StyledButton } from "./styled";
 
-const Button = ({ buttonClick, btnText }) => (
-  <StyledButton type="button" onClick={buttonClick}>
-    {btnText}
+const Button = ({ buttonClick, btnText, isLoading }) => (
+  <StyledButton type="button" onClick={buttonClick} loading={isLoading}>
+    {isLoading ? <Spinner /> : btnText}
   </StyledButton>
 );
 

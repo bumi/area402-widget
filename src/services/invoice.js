@@ -85,6 +85,7 @@ export default class InvoiceService {
       }, 2000);
     });
   }
+
   stopWatchingInvoice() {
     window.clearInterval(this.invoiceWatcher);
     this.invoiceWatcher = null;

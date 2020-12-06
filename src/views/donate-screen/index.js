@@ -14,8 +14,8 @@ const DEFAULT_PAYMENT_OPTIONS = [2, 5, 10];
 
 const DonateScreen = ({
   currency,
+  isLoading,
   onNextClick,
-  onRequestClose,
   currencyOptions,
 }) => {
   const [inputAmount, setInputAmount] = useState("");
@@ -32,12 +32,6 @@ const DonateScreen = ({
   const setDefaults = () => {
     setInputAmount("");
     setDonationAmount("");
-  };
-
-  // Think how to clear this
-  const handleCloseClick = () => {
-    setDefaults();
-    onRequestClose();
   };
 
   const handleCustomInput = (e) => {
@@ -90,14 +84,17 @@ const DonateScreen = ({
         </Content>
       </ContentWrapper>
 
-      <Button buttonClick={handleNextClick} btnText="Next" />
+      <Button
+        btnText="Next"
+        isLoading={isLoading}
+        buttonClick={handleNextClick}
+      />
     </Container>
   );
 };
 
 DonateScreen.defaultProps = {
   onNextClick: () => {},
-  onRequestClose: () => {},
 };
 
 export default DonateScreen;

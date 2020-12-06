@@ -88,12 +88,12 @@ const resetCss = css`
   audio,
   video {
     box-sizing: border-box;
-    all: initial;
     margin: 0;
     padding: 0;
     border: 0;
     font-size: 100%;
     font: inherit;
+    font-family: Open Sans;
     vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */
