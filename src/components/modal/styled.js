@@ -12,7 +12,6 @@ export const Backdrop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 `;
 
 export const ModalWrapper = styled.div`
@@ -24,7 +23,6 @@ export const ModalWrapper = styled.div`
   border-radius: 6px;
   align-items: center;
   flex-direction: column;
-  box-sizing: border-box;
 `;
 
 export const ModalContainer = styled.div`
@@ -33,6 +31,5 @@ export const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-sizing: border-box;
   justify-content: space-between;
 `;

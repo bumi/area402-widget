@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-sizing: border-box;
 `;
 
 export const ContentWrapper = styled.div`
@@ -16,14 +15,12 @@ export const ContentWrapper = styled.div`
   padding: 10px;
   align-items: center;
   flex-direction: column;
-  box-sizing: border-box;
   justify-content: center;
 `;
 
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  box-sizing: border-box;
   flex-direction: column;
   justify-content: space-around;
   flex: 1;
@@ -35,14 +32,12 @@ export const Content = styled.div`
 export const Subtitle = styled.h4`
   font-size: 20px;
   padding-top: 20px;
-  box-sizing: border-box;
 `;
 
 export const ThankyouNote = styled.h5`
   font-size: 18px;
   padding-top: 8px;
   text-align: center;
-  box-sizing: border-box;
 `;
 
 export const EmailWrapper = styled.div`
@@ -68,7 +63,6 @@ export const EmailInput = styled.input`
   font-style: normal;
   margin-right: 16px;
   font-weight: normal;
-  box-sizing: border-box;
   padding: 6px 16px;
   background: #ffffff;
   border-radius: 30px;

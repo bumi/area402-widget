@@ -5,7 +5,6 @@ export const TitleWrapper = styled.div`
   display: flex;
   padding: 40px;
   align-items: center;
-  box-sizing: border-box;
   justify-content: space-between;
 `;
 
