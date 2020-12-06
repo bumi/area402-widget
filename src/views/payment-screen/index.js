@@ -29,10 +29,6 @@ const PaymentScreen = ({ payment_request, formatted_amount, expiry }) => {
     return () => clearInterval(timer);
   }, [expiryInSeconds]);
 
-  useEffect(() => {
-    console.log(countdownTime);
-  }, [countdownTime]);
-
   const startTimer = () => {
     if (timer == 0 && expiryInSeconds > 0) {
       timer = setInterval(countDown, 1000);
