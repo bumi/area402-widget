@@ -1,7 +1,9 @@
 import { h } from "preact";
 import QRCode from "qrcode.react";
+import { useEffect, useState } from "preact/hooks";
 
 import Copy from "../../components/icons/copy";
+import { secondsToHms } from "../../utils/helper";
 import {
   Content,
   Subtitle,
@@ -13,7 +15,27 @@ import {
   AmountPlaceholder,
 } from "./styled";
 
-const PaymentScreen = ({ payment_request, formatted_amount }) => {
+const TIME_DEFAULT_STATE = { hours: 0, minutes: 0, seconds: 0 };
+
+const PaymentScreen = ({
+  payment_request,
+  formatted_amount,
+  expiry = 3600,
+}) => {
+  const [countdownTime, setCountdownTime] = useState(TIME_DEFAULT_STATE);
+  const [expiryTime, setExpiryTime] = useState(expiry || 3600);
+
+  useEffect(() => {
+    setInterval(() => {
+      setExpiryTime(expiry - 1);
+      setCountdownTime(secondsToHms(expiryTime - 1));
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    console.log(countdownTime);
+  }, [countdownTime]);
+
   const copyToClipboard = () => {
     var copyText = document.getElementById("lightningUrl");
 
