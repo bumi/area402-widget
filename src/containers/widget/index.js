@@ -32,6 +32,7 @@ const Widget = ({
   const [isModalOpen, setModalIsOpen] = useState(showModal);
   const [invoiceDetails, setInvoiceDetails] = useState(null);
   const [currentScreen, setCurrentScreen] = useState(screenName);
+  const [fetchingInvoiceState, setFetchingInvoiceState] = useState(false);
 
   useEffect(() => {
     return () => setDefaults();
@@ -51,16 +52,20 @@ const Widget = ({
 
   const paymentPagetRenderer = (invoice) => {
     setInvoiceDetails(invoice);
+    setFetchingInvoiceState(false);
     setCurrentScreen("payment-screen");
   };
 
   const handleDonateNextClick = (amount_in_cents) => {
+    setFetchingInvoiceState(true);
+
     const invoiceOptions = {
       amount: amount_in_cents,
       apiToken: API_TOKEN,
       baseURL: apiBaseUrl,
       paymentRequestRenderer: paymentPagetRenderer,
     };
+
     const invoiceService = new InvoiceService(invoiceOptions);
 
     invoiceService.requestPayment().then((response) => {
@@ -88,7 +93,7 @@ const Widget = ({
         return (
           <DonateScreen
             currency={currency}
-            onRequestClose={closeModal}
+            isLoading={fetchingInvoiceState}
             currencyOptions={paymentOptions}
             onNextClick={handleDonateNextClick}
           />
@@ -99,7 +104,6 @@ const Widget = ({
         return (
           <ThankyouScreen
             title={widgetTitle}
-            onRequestClose={closeModal}
             onSubscribeClick={handleSubscribeClick}
             enableEmailSubscription={enableEmailSubscription}
           />
