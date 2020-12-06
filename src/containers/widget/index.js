@@ -12,8 +12,8 @@ import WelcomeScreen from "../../views/welcome-screen";
 import PaymentScreen from "../../views/payment-screen";
 import ThankyouScreen from "../../views/thankyou-screen";
 
-import { StyledCache } from "../../helpers/styled-cache";
-import { WidgetWrapper } from "../../helpers/widget-wrapper";
+import { StyledCache } from "../../utils/styled-cache";
+import { WidgetWrapper } from "../../utils/widget-wrapper";
 
 const API_TOKEN = "UrLnHR1DKN3eiAXefkT9Lm2R";
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
@@ -85,17 +85,13 @@ const Widget = ({
       case "welcome-screen":
         return (
           <WelcomeScreen
-            imageSrc={imageSrc}
-            title={widgetTitle}
             message={welcomeMessage}
-            onRequestClose={closeModal}
             onDonateClick={handleDonateClick}
           />
         );
       case "donate-screen":
         return (
           <DonateScreen
-            title={widgetTitle}
             currency={currency}
             onRequestClose={closeModal}
             currencyOptions={paymentOptions}
@@ -104,13 +100,7 @@ const Widget = ({
         );
       case "payment-screen":
         return (
-          <PaymentScreen
-            title={widgetTitle}
-            currency={currency}
-            onRequestClose={closeModal}
-            selectedAmount={selectedAmount}
-            {...invoiceDetails}
-          />
+          <PaymentScreen selectedAmount={selectedAmount} {...invoiceDetails} />
         );
       case "thankyou-screen":
         return (
@@ -132,7 +122,9 @@ const Widget = ({
         <Button buttonClick={openModal} />
 
         {isModalOpen && (
-          <Modal onRequestClose={closeModal}>{renderModalContent()}</Modal>
+          <Modal title={widgetTitle} onRequestClose={closeModal}>
+            {renderModalContent()}
+          </Modal>
         )}
       </CacheProvider>
     </WidgetWrapper>

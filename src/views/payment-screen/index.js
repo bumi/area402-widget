@@ -1,8 +1,6 @@
 import { h } from "preact";
 import QRCode from "qrcode.react";
 
-import Title from "../../components/title";
-import Button from "../../components/button";
 import Copy from "../../components/icons/copy";
 import {
   Content,
@@ -15,14 +13,7 @@ import {
   AmountPlaceholder,
 } from "./styled";
 
-const PaymentScreen = ({
-  title,
-  currency,
-  onRequestClose,
-  selectedAmount,
-  payment_request,
-  formatted_amount,
-}) => {
+const PaymentScreen = ({ payment_request, formatted_amount }) => {
   const copyToClipboard = () => {
     var copyText = document.getElementById("lightningUrl");
 
@@ -35,8 +26,6 @@ const PaymentScreen = ({
 
   return (
     <Container>
-      <Title title={title} onRequestClose={onRequestClose} />
-
       <ContentWrapper>
         <Subtitle>
           Pay with lightning:{"  "}
@@ -74,10 +63,6 @@ const PaymentScreen = ({
       </StyledButton>
     </Container>
   );
-};
-
-PaymentScreen.defaultProps = {
-  onRequestClose: () => {},
 };
 
 export default PaymentScreen;
