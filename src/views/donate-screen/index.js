@@ -49,15 +49,22 @@ const DonateScreen = ({
   };
 
   const onTagSelect = (val) => {
+    const amountInCents = getAmountInCents(val);
     setDonationAmount(val);
-    handleNextClick(val);
+
+    onNextClick(amountInCents);
   };
 
-  const handleNextClick = (val) => {
-    const value = val || donationAmount || inputAmount;
-    const cents = parseFloat(value) * 100;
-    const amount_in_cents = parseInt(cents, 10);
-    onNextClick(amount_in_cents);
+  const getAmountInCents = (amount) => {
+    const cents = parseFloat(amount) * 100;
+
+    return parseInt(cents, 10);
+  };
+
+  const handleNextClick = () => {
+    const amountInCents = getAmountInCents(donationAmount || inputAmount);
+
+    onNextClick(amountInCents);
   };
 
   return (
