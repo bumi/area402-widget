@@ -2,16 +2,8 @@ import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
 import Button from "../../components/button";
-
-import {
-  TagItem,
-  Content,
-  Subtitle,
-  Container,
-  CustomInput,
-  TagsWrapper,
-  ContentWrapper,
-} from "./styled";
+import { TagItem, CustomInput, TagsWrapper, ExtendedContent } from "./styled";
+import { Subtitle, Container, ContentWrapper } from "../../utils/common-styles";
 
 const DEFAULT_PAYMENT_OPTIONS = [2, 5, 10];
 
@@ -72,7 +64,7 @@ const DonateScreen = ({
       <ContentWrapper>
         <Subtitle>How much would you like to contribute?</Subtitle>
 
-        <Content>
+        <ExtendedContent>
           <TagsWrapper>
             {paymentOptions.map((value, index) => (
               <TagItem
@@ -90,7 +82,7 @@ const DonateScreen = ({
             value={inputAmount}
             onChange={handleCustomInput}
           />
-        </Content>
+        </ExtendedContent>
       </ContentWrapper>
 
       <Button buttonClick={handleNextClick} btnText="Next" />
