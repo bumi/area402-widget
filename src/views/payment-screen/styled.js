@@ -15,7 +15,6 @@ export const Container = styled(StyledContainer)`
 
 export const AmountPlaceholder = styled.span`
   color: #4761fb;
-  box-sizing: border-box;
 `;
 
 export const ClipboardWrapper = styled.div`
@@ -24,7 +23,6 @@ export const ClipboardWrapper = styled.div`
   padding: 6px 16px;
   background: #ffffff;
   border-radius: 30px;
-  box-sizing: border-box;
   border: 1px solid #e2e2e2;
 `;
 
@@ -41,7 +39,6 @@ export const ClipboardText = styled.input`
   font-weight: normal;
   white-space: nowrap;
   font-family: Open Sans;
-  box-sizing: border-box;
   text-overflow: ellipsis;
 `;
 
