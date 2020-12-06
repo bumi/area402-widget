@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
   color: #fff;
   width: 140px;
   height: 32px;
-  cursor: pointer;
+  outline: none;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -13,6 +13,8 @@ export const StyledButton = styled.button`
   letter-spacing: 0em;
   border-radius: 50px;
   transition: box-shadow 100ms ease-in-out;
+  pointer-events: ${(p) => (p.loading ? "none" : "auto")};
+  cursor: ${(p) => (p.loading ? "not-allowed" : "pointer")};
   background: linear-gradient(90deg, #764dfb 0%, #4761fb 100%);
 
   position: relative;
