@@ -2,8 +2,6 @@ import { h } from "preact";
 import QRCode from "qrcode.react";
 import { useEffect, useState } from "preact/hooks";
 
-import Copy from "../../components/icons/copy";
-import { secondsToHms } from "../../utils/helper";
 import {
   Content,
   Subtitle,
@@ -14,27 +12,38 @@ import {
   ClipboardWrapper,
   AmountPlaceholder,
 } from "./styled";
+import Copy from "../../components/icons/copy";
+import { secondsToHms } from "../../utils/helper";
 
-const TIME_DEFAULT_STATE = { hours: 0, minutes: 0, seconds: 0 };
-
-const PaymentScreen = ({
-  payment_request,
-  formatted_amount,
-  expiry = 3600,
-}) => {
-  const [countdownTime, setCountdownTime] = useState(TIME_DEFAULT_STATE);
-  const [expiryTime, setExpiryTime] = useState(expiry || 3600);
+const PaymentScreen = ({ payment_request, formatted_amount, expiry }) => {
+  let timer = 0;
+  const [expiryInSeconds, setExpiryInSeconds] = useState(expiry);
+  const [countdownTime, setCountdownTime] = useState(secondsToHms(expiry));
 
   useEffect(() => {
-    setInterval(() => {
-      setExpiryTime(expiry - 1);
-      setCountdownTime(secondsToHms(expiryTime - 1));
-    }, 1000);
-  }, []);
+    startTimer();
 
-  useEffect(() => {
-    console.log(countdownTime);
-  }, [countdownTime]);
+    return () => clearInterval(timer);
+  }, [expiryInSeconds]);
+
+  const startTimer = () => {
+    if (timer == 0 && expiryInSeconds > 0) {
+      timer = setInterval(countDown, 1000);
+    }
+  };
+
+  const countDown = () => {
+    // Remove one second, set state so a re-render happens.
+    let seconds = expiryInSeconds - 1;
+
+    setExpiryInSeconds(seconds);
+    setCountdownTime(secondsToHms(seconds));
+
+    // Check if we're at zero.
+    if (seconds == 0) {
+      return;
+    }
+  };
 
   const copyToClipboard = () => {
     var copyText = document.getElementById("lightningUrl");
