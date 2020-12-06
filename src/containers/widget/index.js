@@ -29,7 +29,6 @@ const Widget = ({
   paymentOptions,
   enableEmailSubscription,
 }) => {
-  const [selectedAmount, setSelectedAmount] = useState(0);
   const [isModalOpen, setModalIsOpen] = useState(showModal);
   const [invoiceDetails, setInvoiceDetails] = useState(null);
   const [currentScreen, setCurrentScreen] = useState(screenName);
@@ -39,7 +38,6 @@ const Widget = ({
   }, []);
 
   const setDefaults = () => {
-    setSelectedAmount(0);
     setModalIsOpen(false);
     setInvoiceDetails(null);
     setCurrentScreen("welcome-screen");
@@ -57,8 +55,6 @@ const Widget = ({
   };
 
   const handleDonateNextClick = (amount_in_cents) => {
-    setSelectedAmount(amount_in_cents);
-
     const invoiceOptions = {
       amount: amount_in_cents,
       apiToken: API_TOKEN,
@@ -69,7 +65,6 @@ const Widget = ({
 
     invoiceService.requestPayment().then((response) => {
       if (response.settled) {
-        setSelectedAmount(0);
         setInvoiceDetails(null);
         setCurrentScreen("thankyou-screen");
       }
@@ -99,9 +94,7 @@ const Widget = ({
           />
         );
       case "payment-screen":
-        return (
-          <PaymentScreen selectedAmount={selectedAmount} {...invoiceDetails} />
-        );
+        return <PaymentScreen {...invoiceDetails} />;
       case "thankyou-screen":
         return (
           <ThankyouScreen
