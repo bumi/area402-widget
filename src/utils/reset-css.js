@@ -87,6 +87,7 @@ const resetCss = css`
   mark,
   audio,
   video {
+    box-sizing: border-box;
     all: initial;
     margin: 0;
     padding: 0;
@@ -107,16 +108,22 @@ const resetCss = css`
   menu,
   nav,
   section {
-    all: initial;
     display: block;
+    box-sizing: border-box;
+  }
+  body {
+    line-height: 1;
+    box-sizing: border-box;
   }
   ol,
   ul {
     list-style: none;
+    box-sizing: border-box;
   }
   blockquote,
   q {
     quotes: none;
+    box-sizing: border-box;
   }
   blockquote:before,
   blockquote:after,
@@ -128,6 +135,7 @@ const resetCss = css`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+    box-sizing: border-box;
   }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
