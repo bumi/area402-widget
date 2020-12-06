@@ -26,7 +26,7 @@ export const Content = styled.div`
   box-sizing: border-box;
   flex-direction: column;
   text-align: center;
-  justify-content: space-around;
+  justify-content: center;
   flex: 1;
   width: 100%;
   font-size: 16px;

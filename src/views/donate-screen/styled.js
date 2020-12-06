@@ -1,11 +1,5 @@
 import styled from "@emotion/styled";
 
-import { Content } from "../../utils/common-styles";
-
-export const ExtendedContent = styled(Content)`
-  justify-content: center;
-`;
-
 export const TagsWrapper = styled.div`
   display: flex;
   align-items: center;
