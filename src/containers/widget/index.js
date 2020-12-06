@@ -15,13 +15,13 @@ import ThankyouScreen from "../../views/thankyou-screen";
 import { StyledCache } from "../../utils/styled-cache";
 import { WidgetWrapper } from "../../utils/widget-wrapper";
 
-const API_TOKEN = "UrLnHR1DKN3eiAXefkT9Lm2R";
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
 
 const Widget = ({
   currency,
   imageSrc,
   showModal,
+  token,
   apiBaseUrl,
   screenName,
   widgetTitle,
@@ -57,7 +57,7 @@ const Widget = ({
   const handleDonateNextClick = (amount_in_cents) => {
     const invoiceOptions = {
       amount: amount_in_cents,
-      apiToken: API_TOKEN,
+      apiToken: token,
       baseURL: apiBaseUrl,
       paymentRequestRenderer: paymentPagetRenderer,
     };
@@ -133,6 +133,7 @@ Widget.defaultProps = {
   screenName: "welcome-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
+  token: "",
 };
 
 export default Widget;
