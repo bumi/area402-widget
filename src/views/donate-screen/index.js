@@ -94,7 +94,6 @@ const DonateScreen = ({
 };
 
 DonateScreen.defaultProps = {
-  isLoading: false,
   onNextClick: () => {},
 };
 
