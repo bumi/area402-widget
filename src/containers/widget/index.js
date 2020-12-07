@@ -26,6 +26,11 @@ class Widget extends Component {
       isModalOpen: props.showModal,
       currentScreen: props.screenName,
     };
+    this.invoiceService = new InvoiceService({
+      apiToken: this.props.apiToken,
+      apiBaseUrl: this.props.apiBaseUrl,
+      paymentRequestRenderer: this.paymentRequestRenderer
+    });
   }
 
   componentWillUnmount() {
@@ -40,7 +45,10 @@ class Widget extends Component {
     });
   };
 
-  closeModal = () => this.setDefaults();
+  closeModal = () => {
+    this.invoiceService.reset();
+    this.setDefaults();
+  }
 
   openModal = () => {
     this.setState({
@@ -56,7 +64,7 @@ class Widget extends Component {
     });
   };
 
-  paymentPagetRenderer = (invoice) => {
+  paymentRequestRenderer = (invoice) => {
     this.setState({
       invoiceDetails: invoice,
       fetchingInvoiceState: false,
@@ -64,23 +72,12 @@ class Widget extends Component {
     });
   };
 
-  handleDonateNextClick = (amount_in_cents) => {
+  handleDonateNextClick = (amountInCents) => {
     this.setState({
       fetchingInvoiceState: true,
     });
 
-    const { token, apiBaseUrl } = this.props;
-
-    const invoiceOptions = {
-      amount: amount_in_cents,
-      apiToken: token,
-      baseURL: apiBaseUrl,
-      paymentRequestRenderer: this.paymentPagetRenderer,
-    };
-
-    const invoiceService = new InvoiceService(invoiceOptions);
-
-    invoiceService.requestPayment().then((response) => {
+    this.invoiceService.requestPayment({amount: amountInCents}).then((response) => {
       if (response.settled) {
         this.setState({
           invoiceDetails: null,
@@ -163,7 +160,7 @@ Widget.defaultProps = {
   screenName: "welcome-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
-  token: "",
+  apiToken: "",
 };
 
 export default Widget;
