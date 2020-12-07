@@ -3,12 +3,13 @@ import styled from "@emotion/styled";
 export const StyledButton = styled.button`
   border: 0;
   color: #fff;
-  width: 140px;
-  height: 32px;
+  padding: 0.5em 2em;
+  margin: 3px;
   outline: none;
-  font-size: 14px;
+  text-align: center;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.5;
   font-style: normal;
   letter-spacing: 0em;
   border-radius: 50px;

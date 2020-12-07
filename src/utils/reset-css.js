@@ -86,6 +86,7 @@ const resetCss = css`
   time,
   mark,
   audio,
+  button,
   video {
     all: initial;
     box-sizing: border-box;
