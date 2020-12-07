@@ -57,7 +57,7 @@ const BottomCirlceWrapper = styled.div`
 
 export const BottomCircle = () => (
   <BottomCirlceWrapper>
-    <svg width="180" height="114" viewBox="0 0 180 114" fill="none">
+    <svg width="160" height="114" viewBox="0 0 160 114" fill="none">
       <circle cx="178" cy="178" r="178" fill="#4761FB" fill-opacity="0.07" />
     </svg>
   </BottomCirlceWrapper>
