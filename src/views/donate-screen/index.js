@@ -74,13 +74,14 @@ const DonateScreen = ({
                 {`${value} ${currency}`}
               </TagItem>
             ))}
+            <CustomInput
+              type="number"
+              value={inputAmount}
+              onChange={handleCustomInput}
+              placeholder="_€"
+            />
           </TagsWrapper>
 
-          <CustomInput
-            type="number"
-            value={inputAmount}
-            onChange={handleCustomInput}
-          />
         </Content>
       </ContentWrapper>
 
