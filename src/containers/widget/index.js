@@ -1,6 +1,5 @@
-import { h } from "preact";
+import { h, Component } from "preact";
 import { CacheProvider } from "@emotion/react";
-import { useState, useEffect } from "preact/hooks";
 
 import Modal from "../../components/modal";
 import Button from "../../components/button";
@@ -17,76 +16,101 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
 
-const Widget = ({
-  currency,
-  imageSrc,
-  showModal,
-  token,
-  apiBaseUrl,
-  screenName,
-  widgetTitle,
-  welcomeMessage,
-  paymentOptions,
-  enableEmailSubscription,
-}) => {
-  const [isModalOpen, setModalIsOpen] = useState(showModal);
-  const [invoiceDetails, setInvoiceDetails] = useState(null);
-  const [currentScreen, setCurrentScreen] = useState(screenName);
-  const [fetchingInvoiceState, setFetchingInvoiceState] = useState(false);
+class Widget extends Component {
+  constructor(props) {
+    super(props);
 
-  useEffect(() => {
-    return () => setDefaults();
-  }, []);
+    this.state = {
+      invoiceDetails: null,
+      fetchingInvoiceState: false,
+      isModalOpen: props.showModal,
+      currentScreen: props.screenName,
+    };
+  }
 
-  const setDefaults = () => {
-    setModalIsOpen(false);
-    setInvoiceDetails(null);
-    setCurrentScreen("welcome-screen");
+  componentWillUnmount() {
+    this.setDefaults();
+  }
+
+  setDefaults = () => {
+    this.setState({
+      isModalOpen: false,
+      invoiceDetails: null,
+      currentScreen: "welcome-screen",
+    });
   };
 
-  const closeModal = () => setDefaults();
+  closeModal = () => this.setDefaults();
 
-  const openModal = () => setModalIsOpen(true);
-
-  const handleDonateClick = () => setCurrentScreen("donate-screen");
-
-  const paymentPagetRenderer = (invoice) => {
-    setInvoiceDetails(invoice);
-    setFetchingInvoiceState(false);
-    setCurrentScreen("payment-screen");
+  openModal = () => {
+    this.setState({
+      isModalOpen: true,
+    });
   };
 
-  const handleDonateNextClick = (amount_in_cents) => {
-    setFetchingInvoiceState(true);
+  openWidget = () => this.openModal();
+
+  handleDonateClick = () => {
+    this.setState({
+      currentScreen: "donate-screen",
+    });
+  };
+
+  paymentPagetRenderer = (invoice) => {
+    this.setState({
+      invoiceDetails: invoice,
+      fetchingInvoiceState: false,
+      currentScreen: "payment-screen",
+    });
+  };
+
+  handleDonateNextClick = (amount_in_cents) => {
+    this.setState({
+      fetchingInvoiceState: true,
+    });
+
+    const { token, apiBaseUrl } = this.props;
 
     const invoiceOptions = {
       amount: amount_in_cents,
       apiToken: token,
       baseURL: apiBaseUrl,
-      paymentRequestRenderer: paymentPagetRenderer,
+      paymentRequestRenderer: this.paymentPagetRenderer,
     };
 
     const invoiceService = new InvoiceService(invoiceOptions);
 
     invoiceService.requestPayment().then((response) => {
       if (response.settled) {
-        setInvoiceDetails(null);
-        setCurrentScreen("thankyou-screen");
+        this.setState({
+          invoiceDetails: null,
+          currentScreen: "thankyou-screen",
+        });
       }
     });
   };
 
-  const handleSubscribeClick = (value = "") => {
+  handleSubscribeClick = (value = "") => {
     console.log("entered email: ", value);
   };
 
-  const renderModalContent = () => {
+  renderModalContent = () => {
+    const {
+      currency,
+      widgetTitle,
+      welcomeMessage,
+      paymentOptions,
+      enableEmailSubscription,
+    } = this.props;
+
+    const { currentScreen, invoiceDetails, fetchingInvoiceState } = this.state;
+
     switch (currentScreen) {
       case "welcome-screen":
         return (
           <WelcomeScreen
             message={welcomeMessage}
-            onDonateClick={handleDonateClick}
+            onDonateClick={this.handleDonateClick}
           />
         );
       case "donate-screen":
@@ -95,7 +119,7 @@ const Widget = ({
             currency={currency}
             isLoading={fetchingInvoiceState}
             currencyOptions={paymentOptions}
-            onNextClick={handleDonateNextClick}
+            onNextClick={this.handleDonateNextClick}
           />
         );
       case "payment-screen":
@@ -104,7 +128,7 @@ const Widget = ({
         return (
           <ThankyouScreen
             title={widgetTitle}
-            onSubscribeClick={handleSubscribeClick}
+            onSubscribeClick={this.handleSubscribeClick}
             enableEmailSubscription={enableEmailSubscription}
           />
         );
@@ -113,20 +137,22 @@ const Widget = ({
     }
   };
 
-  return (
-    <WidgetWrapper>
-      <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
-        <Button buttonClick={openModal} />
+  render({ widgetTitle }, { isModalOpen }) {
+    return (
+      <WidgetWrapper>
+        <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
+          <Button buttonClick={this.openModal} />
 
-        {isModalOpen && (
-          <Modal title={widgetTitle} onRequestClose={closeModal}>
-            {renderModalContent()}
-          </Modal>
-        )}
-      </CacheProvider>
-    </WidgetWrapper>
-  );
-};
+          {isModalOpen && (
+            <Modal title={widgetTitle} onRequestClose={this.closeModal}>
+              {this.renderModalContent()}
+            </Modal>
+          )}
+        </CacheProvider>
+      </WidgetWrapper>
+    );
+  }
+}
 
 Widget.defaultProps = {
   imageSrc: "",
