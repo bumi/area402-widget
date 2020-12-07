@@ -37,6 +37,7 @@ export const ClipboardText = styled.input`
 `;
 
 export const Button = styled.a`
+  text-decoration: none;
   border: 0;
   color: #fff;
   padding: 0.5em 2em;
