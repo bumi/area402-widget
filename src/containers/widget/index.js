@@ -21,6 +21,15 @@ class Widget extends Component {
     super(props);
 
     this.state = {
+      // storing props in local state
+      apiToken: props.apiToken,
+      currency: props.currency,
+      apiBaseUrl: props.apiBaseUrl,
+      widgetTitle: props.widgetTitle,
+      paymentOptions: props.paymentOptions,
+      welcomeMessage: props.welcomeMessage,
+      enableEmailSubscription: props.enableEmailSubscription,
+
       invoiceDetails: null,
       fetchingInvoiceState: false,
       isModalOpen: props.showModal,
@@ -36,6 +45,28 @@ class Widget extends Component {
 
   componentWillUnmount() {
     this.setDefaults();
+  }
+
+  componentDidMount() {
+    const {
+      apiToken,
+      currency,
+      apiBaseUrl,
+      widgetTitle,
+      paymentOptions,
+      welcomeMessage,
+      enableEmailSubscription,
+    } = this.props;
+
+    this.setState({
+      apiToken: apiToken,
+      currency: currency,
+      apiBaseUrl: apiBaseUrl,
+      widgetTitle: widgetTitle,
+      paymentOptions: paymentOptions,
+      welcomeMessage: welcomeMessage,
+      enableEmailSubscription: enableEmailSubscription,
+    });
   }
 
   setDefaults = () => {
@@ -57,7 +88,12 @@ class Widget extends Component {
     });
   };
 
-  openWidget = () => this.openModal();
+  openWidget = (attributes) => {
+    this.setState({
+      ...attributes,
+      isModalOpen: true,
+    });
+  };
 
   handleDonateClick = () => {
     this.setState({
@@ -98,12 +134,13 @@ class Widget extends Component {
     const {
       currency,
       widgetTitle,
+      currentScreen,
+      invoiceDetails,
       welcomeMessage,
       paymentOptions,
+      fetchingInvoiceState,
       enableEmailSubscription,
-    } = this.props;
-
-    const { currentScreen, invoiceDetails, fetchingInvoiceState } = this.state;
+    } = this.state;
 
     switch (currentScreen) {
       case "welcome-screen":
@@ -137,7 +174,7 @@ class Widget extends Component {
     }
   };
 
-  render({ widgetTitle }, { isModalOpen }) {
+  render({}, { widgetTitle, isModalOpen }) {
     return (
       <WidgetWrapper>
         <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
