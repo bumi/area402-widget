@@ -20,15 +20,27 @@ export const ContentWrapper = styled.div`
 
 export const Content = styled.div`
   display: flex;
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
   align-items: center;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   flex: 1;
   width: 100%;
-  font-size: 16px;
 `;
 
 export const Subtitle = styled.h4`
-  font-size: 20px;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
 `;
