@@ -17,7 +17,12 @@ import {
 import Copy from "../../components/icons/copy";
 import { secondsToHms } from "../../utils/helper";
 
-const PaymentScreen = ({ payment_request, formatted_amount, expiry }) => {
+const PaymentScreen = ({
+  value,
+  expiry,
+  payment_request,
+  formatted_amount,
+}) => {
   let timer = 0;
   const [remainingPercent, setRemainingPercent] = useState(0);
   const [expiryInSeconds, setExpiryInSeconds] = useState(expiry);
@@ -71,7 +76,7 @@ const PaymentScreen = ({ payment_request, formatted_amount, expiry }) => {
       <ContentWrapper>
         <Subtitle>
           Pay with lightning:{"  "}
-          <AmountPlaceholder>{formatted_amount}</AmountPlaceholder>
+          <AmountPlaceholder>{`${formatted_amount}  (${value} sats)`}</AmountPlaceholder>
         </Subtitle>
 
         <Content>
