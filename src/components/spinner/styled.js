@@ -18,11 +18,11 @@ export const SpinnerWrapper = styled.div`
   &::after {
     content: " ";
     display: block;
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
     margin: 0 auto;
     border-radius: 50%;
-    border: 4px solid #fff;
+    border: 1px solid #fff;
     border-color: #fff transparent #fff transparent;
     animation: ${dualRing} 1.2s linear infinite;
   }
