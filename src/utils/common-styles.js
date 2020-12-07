@@ -34,7 +34,7 @@ export const Content = styled.div`
 `;
 
 export const Subtitle = styled.h4`
-  font-family: Metropolis, Helvetica, Arial, serif;
+  font-family: "Open Sans", "Lucida Sans", Helvetica, Arial, sans-serif;
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 600;

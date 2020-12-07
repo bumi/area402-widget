@@ -33,7 +33,7 @@ export const ModalContainer = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  font-family: Metropolis, Helvetica, Arial, serif;
+  font-family: "Open Sans", "Lucida Sans", Helvetica, Arial, sans-serif;
   font-size: 1rem;
 `;
 
