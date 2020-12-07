@@ -80,7 +80,7 @@ const PaymentScreen = ({
 
         <Content>
           <QRCode
-            size={90}
+            size={120}
             level={"L"}
             renderAs={"svg"}
             bgColor={"#ffffff"}
