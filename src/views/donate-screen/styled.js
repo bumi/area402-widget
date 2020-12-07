@@ -16,7 +16,7 @@ export const TagItem = styled.span(
     background-color: #ffffff;
     border: 1px solid #d9d9d9;
     transition: all 400ms ease-in-out;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0em;
@@ -46,11 +46,11 @@ export const TagItem = styled.span(
 );
 
 export const CustomInput = styled.input`
-  width: 40px;
+  width: 80px;
   margin: 0 5px;
   padding: 6px 14px;
   border-radius: 50px;
-  background-color: #ffffff;
+  background: #ffffff;
   border: 1px solid #d9d9d9;
   transition: all 200ms ease-in-out;
   font-size: 1.3rem;
