@@ -21,6 +21,7 @@ export const ModalWrapper = styled.div`
   z-index: 99;
   background: #fff;
   border-radius: 6px;
+  position: relative;
   align-items: center;
   flex-direction: column;
 `;
@@ -33,3 +34,31 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
+const TopCircleWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+`;
+
+export const TopCircle = () => (
+  <TopCircleWrapper>
+    <svg width="180" height="130" viewBox="0 0 180 130" fill="none">
+      <circle cx="-40" cy="-100" r="232" fill="#4761FB" fill-opacity="0.07" />
+    </svg>
+  </TopCircleWrapper>
+);
+
+const BottomCirlceWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: -5px;
+  text-align: end;
+`;
+
+export const BottomCircle = () => (
+  <BottomCirlceWrapper>
+    <svg width="180" height="114" viewBox="0 0 180 114" fill="none">
+      <circle cx="178" cy="178" r="178" fill="#4761FB" fill-opacity="0.07" />
+    </svg>
+  </BottomCirlceWrapper>
+);

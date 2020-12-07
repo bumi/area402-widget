@@ -2,7 +2,13 @@ import { h } from "preact";
 import { useEffect } from "preact/hooks";
 
 import Title from "../title";
-import { Backdrop, ModalWrapper, ModalContainer } from "./styled";
+import {
+  Backdrop,
+  TopCircle,
+  BottomCircle,
+  ModalWrapper,
+  ModalContainer,
+} from "./styled";
 
 const Modal = ({ onRequestClose, children, title }) => {
   const onKeyDown = (event) => {
@@ -28,6 +34,9 @@ const Modal = ({ onRequestClose, children, title }) => {
   return (
     <Backdrop>
       <ModalWrapper>
+        <TopCircle />
+        <BottomCircle />
+
         <ModalContainer>
           <Title title={title} onRequestClose={onRequestClose} />
 
