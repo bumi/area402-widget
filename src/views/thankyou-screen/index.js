@@ -39,21 +39,23 @@ const ThankyouScreen = ({ onSubscribeClick, enableEmailSubscription }) => {
         <Content>
           <ThankyouIcon />
 
-          <ThankyouNote>
-            Make your contribution recurring. <br />
-            Enter your email and we will send you a monthly invoice.
-          </ThankyouNote>
-
           {enableEmailSubscription && (
-            <EmailWrapper>
-              <StyledSpan>Email:</StyledSpan>
+            <div>
+              <ThankyouNote>
+                Make your contribution recurring. <br />
+                Enter your email and we will send you a monthly invoice.
+              </ThankyouNote>
 
-              <EmailInput
-                type="text"
-                value={email}
-                onChange={handleInputOnChange}
-              />
-            </EmailWrapper>
+              <EmailWrapper>
+                <StyledSpan>Email:</StyledSpan>
+
+                <EmailInput
+                  type="text"
+                  value={email}
+                  onChange={handleInputOnChange}
+                />
+              </EmailWrapper>
+            </div>
           )}
         </Content>
       </ContentWrapper>
