@@ -72,6 +72,7 @@ class Widget extends Component {
   setDefaults = () => {
     this.setState({
       isModalOpen: false,
+      fetchingInvoiceState: false,
       invoiceDetails: null,
       currentScreen: "welcome-screen",
     });
