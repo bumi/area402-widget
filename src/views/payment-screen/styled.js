@@ -39,25 +39,24 @@ export const ClipboardText = styled.input`
 export const Button = styled.a`
   border: 0;
   color: #fff;
-  width: 140px;
-  height: 32px;
+  padding: 0.5em 2em;
+  margin: 3px;
   outline: none;
-  cursor: pointer;
-  font-size: 14px;
+  text-align: center;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.5;
   font-style: normal;
   letter-spacing: 0em;
   border-radius: 50px;
-  text-decoration: none;
   transition: box-shadow 100ms ease-in-out;
+  pointer-events: ${(p) => (p.loading ? "none" : "auto")};
+  cursor: ${(p) => (p.loading ? "not-allowed" : "pointer")};
   background: linear-gradient(90deg, #764dfb 0%, #4761fb 100%);
 
-  display: flex;
   position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
+  display: inline-block;
+  background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
