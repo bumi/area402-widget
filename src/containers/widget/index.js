@@ -26,10 +26,11 @@ class Widget extends Component {
       isModalOpen: props.showModal,
       currentScreen: props.screenName,
     };
+
     this.invoiceService = new InvoiceService({
       apiToken: this.props.apiToken,
       apiBaseUrl: this.props.apiBaseUrl,
-      paymentRequestRenderer: this.paymentRequestRenderer
+      paymentRequestRenderer: this.paymentRequestRenderer,
     });
   }
 
@@ -48,7 +49,7 @@ class Widget extends Component {
   closeModal = () => {
     this.invoiceService.reset();
     this.setDefaults();
-  }
+  };
 
   openModal = () => {
     this.setState({
@@ -77,14 +78,16 @@ class Widget extends Component {
       fetchingInvoiceState: true,
     });
 
-    this.invoiceService.requestPayment({amount: amountInCents}).then((response) => {
-      if (response.settled) {
-        this.setState({
-          invoiceDetails: null,
-          currentScreen: "thankyou-screen",
-        });
-      }
-    });
+    this.invoiceService
+      .requestPayment({ amount: amountInCents })
+      .then((response) => {
+        if (response.settled) {
+          this.setState({
+            invoiceDetails: null,
+            currentScreen: "thankyou-screen",
+          });
+        }
+      });
   };
 
   handleSubscribeClick = (value = "") => {
