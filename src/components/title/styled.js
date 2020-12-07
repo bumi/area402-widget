@@ -14,7 +14,7 @@ export const HiddenBlock = styled.div`
 
 export const StyledH3 = styled.h3`
   width: 100%;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
 `;

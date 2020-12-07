@@ -20,11 +20,9 @@ export const ContentWrapper = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  font-family: Open Sans;
-  font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 1.5;
   letter-spacing: 0em;
   text-align: left;
   align-items: center;
@@ -36,11 +34,11 @@ export const Content = styled.div`
 `;
 
 export const Subtitle = styled.h4`
-  font-family: Open Sans;
-  font-size: 16px;
+  font-family: Metropolis, Helvetica, Arial, serif;
+  font-size: 1.3rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 19px;
+  line-height: 1.5;
   letter-spacing: 0em;
   text-align: center;
 `;
