@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 export const TitleWrapper = styled.div`
   width: 100%;
   display: flex;
-  padding: 40px;
   align-items: center;
-  justify-content: space-between;
+  padding: 25px 20px 20px;
+  flex-direction: row-reverse;
 `;
 
 export const HiddenBlock = styled.div`
@@ -13,5 +13,13 @@ export const HiddenBlock = styled.div`
 `;
 
 export const StyledH3 = styled.h3`
-  font-size: 25px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+`;
+
+export const IconWrapper = styled.span`
+  cursor: pointer;
+  position: absolute;
 `;
