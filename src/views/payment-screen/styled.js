@@ -19,6 +19,20 @@ export const ClipboardWrapper = styled.div`
   background: #ffffff;
   border-radius: 30px;
   border: 1px solid #e2e2e2;
+
+  svg.copy.active {
+    padding: 1px;
+    width: 13px;
+    height: 13px;
+    fill: #000;
+  }
+  svg.copy {
+    cursor: pointer;
+    padding: 0px;
+    width: 15px;
+    height: 15px;
+    fill: #4761FB;
+  }
 `;
 
 export const ClipboardText = styled.input`

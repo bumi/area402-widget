@@ -27,6 +27,7 @@ const PaymentScreen = ({
   const [remainingPercent, setRemainingPercent] = useState(0);
   const [expiryInSeconds, setExpiryInSeconds] = useState(expiry);
   const [countdownTime, setCountdownTime] = useState(secondsToHms(expiry));
+  const [copiedToClipboard, setCopiedToClipboard] = useState(false);
 
   useEffect(() => {
     startTimer();
@@ -62,13 +63,10 @@ const PaymentScreen = ({
   };
 
   const copyToClipboard = () => {
-    var copyText = document.getElementById("lightningUrl");
-
-    /* Select the text field */
-    copyText.select();
-
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
+    setCopiedToClipboard(true);
+    navigator.clipboard.writeText(payment_request).then(() => {
+      setTimeout(() => setCopiedToClipboard(false), 100);
+    });
   };
 
   return (
@@ -98,7 +96,7 @@ const PaymentScreen = ({
             />
 
             <span onClick={copyToClipboard}>
-              <Copy />
+              <Copy active={copiedToClipboard} />
             </span>
           </ClipboardWrapper>
         </Content>
