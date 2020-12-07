@@ -1,17 +1,15 @@
 import { h } from "preact";
 
 import Close from "../icons/close";
-import { StyledH3, HiddenBlock, TitleWrapper } from "./styled";
+import { StyledH3, TitleWrapper, IconWrapper } from "./styled";
 
 const Title = ({ title, onRequestClose }) => (
   <TitleWrapper>
-    <HiddenBlock>asdkas</HiddenBlock>
-
     <StyledH3>{title}</StyledH3>
 
-    <span onClick={onRequestClose}>
+    <IconWrapper onClick={onRequestClose}>
       <Close />
-    </span>
+    </IconWrapper>
   </TitleWrapper>
 );
 
