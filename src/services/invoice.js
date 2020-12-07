@@ -1,6 +1,5 @@
 export default class InvoiceService {
   constructor(options) {
-    console.log(options);
     this.apiBaseUrl = options.apiBaseUrl;
     this.apiToken = options.apiToken;
     this.paymentRequestRenderer = options.paymentRequestRenderer;
@@ -107,7 +106,6 @@ export default class InvoiceService {
       if (response.ok) {
         return response.json();
       } else {
-        console.log(response);
         throw new Error(response);
       }
     });
