@@ -75,7 +75,6 @@ const PaymentScreen = ({
     <Container>
       <ContentWrapper>
         <Subtitle>
-          Pay with lightning:{"  "}
           <AmountPlaceholder>{`${formatted_amount}  (${value} sats)`}</AmountPlaceholder>
         </Subtitle>
 
