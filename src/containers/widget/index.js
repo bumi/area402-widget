@@ -35,6 +35,9 @@ class Widget extends Component {
       isModalOpen: props.showModal,
       currentScreen: props.screenName,
     };
+    if (this.state.currentScreen === "welcome-screen" && this.state.welcomeMessage === "") {
+      this.setState({currentScreen: "donate-screen"});
+    }
 
     this.invoiceService = new InvoiceService({
       apiToken: this.props.apiToken,
@@ -74,7 +77,7 @@ class Widget extends Component {
       isModalOpen: false,
       fetchingInvoiceState: false,
       invoiceDetails: null,
-      currentScreen: "welcome-screen",
+      currentScreen: (this.props.welcomeMessage === "" ? "donate-screen" : "welcome-screen"),
     });
   };
 
