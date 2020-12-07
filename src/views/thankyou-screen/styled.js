@@ -1,42 +1,19 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  width: 100%;
-  padding: 10px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-export const Content = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-  flex: 1;
-  width: 100%;
-  font-size: 16px;
-  padding: 4px 4px 10px 4px;
-`;
-
-export const Subtitle = styled.h4`
-  font-size: 20px;
-  padding-top: 20px;
-`;
+export {
+  Content,
+  Subtitle,
+  Container,
+  ContentWrapper,
+} from "../../utils/common-styles";
 
 export const ThankyouNote = styled.h5`
-  font-size: 18px;
-  padding-top: 8px;
+  font-size: 14px;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
   text-align: center;
 `;
 

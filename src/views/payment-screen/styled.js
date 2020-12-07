@@ -2,12 +2,7 @@ import styled from "@emotion/styled";
 
 import { Container as StyledContainer } from "../../utils/common-styles";
 
-export {
-  Content,
-  Subtitle,
-  ContentWrapper,
-  Container as StyledContainer,
-} from "../../utils/common-styles";
+export { Content, Subtitle, ContentWrapper } from "../../utils/common-styles";
 
 export const Container = styled(StyledContainer)`
   padding: 0;

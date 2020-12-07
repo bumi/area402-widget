@@ -11,11 +11,17 @@ export const TagItem = styled.span(
   (props) => `
     margin: 0 5px;
     cursor: pointer;
-    padding: 8px 16px;
+    padding: 6px 14px;
     border-radius: 50px;
     background-color: #ffffff;
     border: 1px solid #d9d9d9;
     transition: all 400ms ease-in-out;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
 
     &:hover {
       border-color: #b692ff;

@@ -76,7 +76,7 @@ const PaymentScreen = ({ payment_request, formatted_amount, expiry }) => {
 
         <Content>
           <QRCode
-            size={90}
+            size={70}
             level={"L"}
             renderAs={"svg"}
             bgColor={"#ffffff"}
@@ -113,6 +113,10 @@ const PaymentScreen = ({ payment_request, formatted_amount, expiry }) => {
       />
     </Container>
   );
+};
+
+PaymentScreen.defaultProps = {
+  payment_request: "",
 };
 
 export default PaymentScreen;
