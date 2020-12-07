@@ -5,8 +5,8 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 40px 40px;
   flex-direction: column;
+  padding: 0 30px 25px 30px;
 `;
 
 export const ContentWrapper = styled.div`
