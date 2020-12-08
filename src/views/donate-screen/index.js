@@ -61,15 +61,18 @@ const DonateScreen = ({
 
         <Content>
           <TagsWrapper>
-            {paymentOptions.map((value, index) => (
-              <TagItem
-                key={index}
-                onClick={() => onTagSelect(value)}
-                selected={value === donationAmount}
-              >
-                {`${value} ${currency}`}
-              </TagItem>
-            ))}
+            {Object.keys(paymentOptions).map((key, index) => {
+              const amount = paymentOptions[key];
+              return (
+                <TagItem
+                  key={index}
+                  onClick={() => onTagSelect(amount)}
+                  selected={amount === donationAmount}
+                >
+                  {key}
+                </TagItem>
+              )
+            })}
             <CustomInput
               type="number"
               value={inputAmount}
