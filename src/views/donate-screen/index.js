@@ -15,6 +15,7 @@ const DonateScreen = ({
   isLoading,
   onNextClick,
   paymentOptions,
+  disableCustomAmount,
 }) => {
   const [inputAmount, setInputAmount] = useState("");
   const [donationAmount, setDonationAmount] = useState("");
@@ -73,12 +74,14 @@ const DonateScreen = ({
                 </TagItem>
               )
             })}
-            <CustomInput
-              type="number"
-              value={inputAmount}
-              onChange={handleCustomInput}
-              placeholder="_€"
-            />
+            {!disableCustomAmount && (
+              <CustomInput
+                type="number"
+                value={inputAmount}
+                onChange={handleCustomInput}
+                placeholder="_€"
+              />
+            )}
           </TagsWrapper>
 
         </Content>

@@ -197,10 +197,11 @@ class Widget extends Component {
 
 Widget.defaultProps = {
   imageSrc: "",
-  currency: "€",
+  currency: "EUR",
   widgetTitle: "",
   showModal: false,
-  paymentOptions: [1,2,5,10],
+  disableCustomAmount: false,
+  paymentOptions: {"1€": 1, "2€": 2, "5€": 5, "10€": 10},
   screenName: "welcome-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
