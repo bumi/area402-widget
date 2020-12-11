@@ -9,14 +9,14 @@ export const TagsWrapper = styled.div`
 
 export const TagItem = styled.span(
   (props) => `
-    margin: 0 5px;
+    margin: 0 0.1em;
+    padding: 0.3em 0.6em;
     cursor: pointer;
-    padding: 6px 14px;
     border-radius: 50px;
     background-color: #ffffff;
     border: 1px solid #d9d9d9;
     transition: all 400ms ease-in-out;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0em;
@@ -46,14 +46,14 @@ export const TagItem = styled.span(
 );
 
 export const CustomInput = styled.input`
-  width: 80px;
-  margin: 0 5px;
-  padding: 6px 14px;
+  width: 4rem;
+  margin: 0 0.1em;
+  padding: 0.3em 0.6em;
   border-radius: 50px;
   background: #ffffff;
   border: 1px solid #d9d9d9;
   transition: all 200ms ease-in-out;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0em;

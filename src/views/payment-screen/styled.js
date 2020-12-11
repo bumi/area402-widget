@@ -14,8 +14,8 @@ export const AmountPlaceholder = styled.span`
 
 export const ClipboardWrapper = styled.div`
   display: flex;
-  margin-top: 10px;
-  padding: 6px 16px;
+  margin: 1em;
+  padding: 0.3em 0.6em;
   background: #ffffff;
   border-radius: 30px;
   border: 1px solid #e2e2e2;
@@ -37,10 +37,9 @@ export const ClipboardWrapper = styled.div`
 
 export const ClipboardText = styled.input`
   border: none;
-  width: 175px;
   outline: none;
   color: #3e396b;
-  font-size: 12px;
+  font-size: 0.8rem;
   overflow: hidden;
   line-height: 16px;
   font-style: normal;
@@ -103,10 +102,10 @@ export const Button = styled.a`
 
 export const CountdownText = styled.div`
   color: #3e396b;
-  margin: 14px 0;
-  font-size: 10px;
+  margin-top: 1em;
+  font-size: 0.7rem;
   font-weight: 400;
-  line-height: 14px;
+  line-height: 1.5;
   font-style: normal;
   text-align: center;
   letter-spacing: 0em;

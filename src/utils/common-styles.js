@@ -21,6 +21,7 @@ export const ContentWrapper = styled.div`
 export const Content = styled.div`
   display: flex;
   font-style: normal;
+  font-size: 1.0rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0em;
@@ -35,7 +36,7 @@ export const Content = styled.div`
 
 export const Subtitle = styled.h4`
   font-family: "Open Sans", "Lucida Sans", Helvetica, Arial, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-style: normal;
   font-weight: 600;
   line-height: 1.5;
