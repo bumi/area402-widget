@@ -10,18 +10,14 @@ import {
 import Button from "../../components/button";
 import { TagItem, CustomInput, TagsWrapper } from "./styled";
 
-const DEFAULT_PAYMENT_OPTIONS = [2, 5, 10];
-
 const DonateScreen = ({
   currency,
   isLoading,
   onNextClick,
-  currencyOptions,
+  paymentOptions,
 }) => {
   const [inputAmount, setInputAmount] = useState("");
   const [donationAmount, setDonationAmount] = useState("");
-  const paymentOptions =
-    currencyOptions.length > 0 ? currencyOptions : DEFAULT_PAYMENT_OPTIONS;
 
   useEffect(() => {
     return () => {
@@ -65,15 +61,18 @@ const DonateScreen = ({
 
         <Content>
           <TagsWrapper>
-            {paymentOptions.map((value, index) => (
-              <TagItem
-                key={index}
-                onClick={() => onTagSelect(value)}
-                selected={value === donationAmount}
-              >
-                {`${value} ${currency}`}
-              </TagItem>
-            ))}
+            {Object.keys(paymentOptions).map((key, index) => {
+              const amount = paymentOptions[key];
+              return (
+                <TagItem
+                  key={index}
+                  onClick={() => onTagSelect(amount)}
+                  selected={amount === donationAmount}
+                >
+                  {key}
+                </TagItem>
+              )
+            })}
             <CustomInput
               type="number"
               value={inputAmount}

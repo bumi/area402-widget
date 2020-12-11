@@ -159,7 +159,7 @@ class Widget extends Component {
           <DonateScreen
             currency={currency}
             isLoading={fetchingInvoiceState}
-            currencyOptions={paymentOptions}
+            paymentOptions={paymentOptions}
             onNextClick={this.handleDonateNextClick}
           />
         );
@@ -200,7 +200,7 @@ Widget.defaultProps = {
   currency: "€",
   widgetTitle: "",
   showModal: false,
-  paymentOptions: [],
+  paymentOptions: [1,2,5,10],
   screenName: "welcome-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
