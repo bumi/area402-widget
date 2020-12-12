@@ -14,7 +14,13 @@
     "dist": "microbundle --entry src/components/hello-world/index.js"
   },
   "keywords": [],
-  "author": "Zouhir <zouhir@zouhir.org>",
+  "author": "Michael Bumann <hello@michaelbumann.com>",
+  "contributors": [
+    {
+      "name": "Anup",
+      "email": "allamsetty.anup@gmail.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.13.0",
