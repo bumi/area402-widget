@@ -39,6 +39,7 @@ export const ModalContainer = styled.div`
 const TopCircleWrapper = styled.div`
   position: absolute;
   width: 100%;
+  z-index: -1;
 `;
 
 export const TopCircle = () => (
@@ -54,6 +55,7 @@ const BottomCirlceWrapper = styled.div`
   width: 100%;
   bottom: -5px;
   text-align: end;
+  z-index: -1;
 `;
 
 export const BottomCircle = () => (
