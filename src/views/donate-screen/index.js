@@ -52,6 +52,10 @@ const DonateScreen = ({
   const handleNextClick = () => {
     const amountInCents = getAmountInCents(donationAmount || inputAmount);
 
+    if (amountInCents < 1 || amountInCents > 10000) {
+      return;
+    }
+
     onNextClick(amountInCents);
   };
 
