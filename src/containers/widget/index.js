@@ -16,28 +16,42 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
 
+function getBasicState(props) {
+  const {
+    apiToken,
+    currency,
+    showModal,
+    apiBaseUrl,
+    widgetTitle,
+    paymentOptions,
+    welcomeMessage,
+    enableEmailSubscription,
+  } = props;
+
+  return {
+    apiToken: apiToken || "",
+    currency: currency || "€",
+    apiBaseUrl: apiBaseUrl || "",
+    isModalOpen: showModal || false,
+    widgetTitle: widgetTitle || "",
+    welcomeMessage: welcomeMessage || "",
+    paymentOptions: paymentOptions || [],
+    enableEmailSubscription: enableEmailSubscription || false,
+  };
+}
+
 class Widget extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       // storing props in local state
-      apiToken: props.apiToken,
-      currency: props.currency,
-      apiBaseUrl: props.apiBaseUrl,
-      widgetTitle: props.widgetTitle,
-      paymentOptions: props.paymentOptions,
-      welcomeMessage: props.welcomeMessage,
-      enableEmailSubscription: props.enableEmailSubscription,
+      ...getBasicState(props),
 
       invoiceDetails: null,
       fetchingInvoiceState: false,
-      isModalOpen: props.showModal,
-      currentScreen: props.screenName,
+      currentScreen: props.welcomeMessage ? "welcome-screen" : "donate-screen",
     };
-    if (this.state.currentScreen === "welcome-screen" && this.state.welcomeMessage === "") {
-      this.setState({currentScreen: "donate-screen"});
-    }
 
     this.invoiceService = new InvoiceService({
       apiToken: this.props.apiToken,
@@ -51,33 +65,18 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-    const {
-      apiToken,
-      currency,
-      apiBaseUrl,
-      widgetTitle,
-      paymentOptions,
-      welcomeMessage,
-      enableEmailSubscription,
-    } = this.props;
-
     this.setState({
-      apiToken: apiToken,
-      currency: currency,
-      apiBaseUrl: apiBaseUrl,
-      widgetTitle: widgetTitle,
-      paymentOptions: paymentOptions,
-      welcomeMessage: welcomeMessage,
-      enableEmailSubscription: enableEmailSubscription,
+      ...getBasicState(this.props),
     });
   }
 
   setDefaults = () => {
     this.setState({
       isModalOpen: false,
-      fetchingInvoiceState: false,
       invoiceDetails: null,
-      currentScreen: (this.props.welcomeMessage === "" ? "donate-screen" : "welcome-screen"),
+      fetchingInvoiceState: false,
+      currentScreen:
+        this.props.welcomeMessage === "" ? "donate-screen" : "welcome-screen",
     });
   };
 
@@ -94,7 +93,7 @@ class Widget extends Component {
 
   openWidget = (attributes) => {
     this.setState({
-      ...attributes,
+      ...getBasicState(attributes),
       isModalOpen: true,
     });
   };
@@ -201,7 +200,7 @@ Widget.defaultProps = {
   widgetTitle: "",
   showModal: false,
   disableCustomAmount: false,
-  paymentOptions: {"1€": 1, "2€": 2, "5€": 5, "10€": 10},
+  paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },
   screenName: "welcome-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
