@@ -34,9 +34,6 @@ const Modal = ({ onRequestClose, children, title }) => {
   return (
     <Backdrop>
       <ModalWrapper>
-        <TopCircle />
-        <BottomCircle />
-
         <ModalContainer>
           <Title title={title} onRequestClose={onRequestClose} />
 
