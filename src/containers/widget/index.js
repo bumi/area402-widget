@@ -16,28 +16,8 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
 
-function getBasicState(props) {
-  const {
-    apiToken,
-    currency,
-    showModal,
-    apiBaseUrl,
-    widgetTitle,
-    paymentOptions,
-    welcomeMessage,
-    enableEmailSubscription,
-  } = props;
-
-  return {
-    apiToken: apiToken || "",
-    currency: currency || "€",
-    apiBaseUrl: apiBaseUrl || "",
-    isModalOpen: showModal || false,
-    widgetTitle: widgetTitle || "",
-    welcomeMessage: welcomeMessage || "",
-    paymentOptions: paymentOptions || [],
-    enableEmailSubscription: enableEmailSubscription || false,
-  };
+function getInitialState(props) {
+  return Object.assign(Widget.defaultProps, props);
 }
 
 class Widget extends Component {
@@ -46,7 +26,7 @@ class Widget extends Component {
 
     this.state = {
       // storing props in local state
-      ...getBasicState(props),
+      ...getInitialState(props),
 
       invoiceDetails: null,
       fetchingInvoiceState: false,
@@ -65,18 +45,17 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      ...getBasicState(this.props),
-    });
+    this.setDefaults();
   }
 
   setDefaults = () => {
     this.setState({
+      ...getInitialState(this.props),
       isModalOpen: false,
       invoiceDetails: null,
       fetchingInvoiceState: false,
       currentScreen:
-        this.props.welcomeMessage === "" ? "donate-screen" : "welcome-screen",
+        !this.props.welcomeMessage || this.props.welcomeMessage === "" ? "donate-screen" : "welcome-screen",
     });
   };
 
@@ -93,7 +72,7 @@ class Widget extends Component {
 
   openWidget = (attributes) => {
     this.setState({
-      ...getBasicState(attributes),
+      ...getInitialState(attributes),
       isModalOpen: true,
     });
   };
