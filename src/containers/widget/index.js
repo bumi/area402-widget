@@ -54,8 +54,9 @@ class Widget extends Component {
       isModalOpen: false,
       invoiceDetails: null,
       fetchingInvoiceState: false,
-      currentScreen:
-        !this.props.welcomeMessage || this.props.welcomeMessage === "" ? "donate-screen" : "welcome-screen",
+      currentScreen: this.props.welcomeMessage
+        ? "welcome-screen"
+        : "donate-screen",
     });
   };
 
@@ -120,6 +121,7 @@ class Widget extends Component {
       invoiceDetails,
       welcomeMessage,
       paymentOptions,
+      disableCustomAmount,
       fetchingInvoiceState,
       enableEmailSubscription,
     } = this.state;
@@ -136,9 +138,10 @@ class Widget extends Component {
         return (
           <DonateScreen
             currency={currency}
-            isLoading={fetchingInvoiceState}
             paymentOptions={paymentOptions}
+            isLoading={fetchingInvoiceState}
             onNextClick={this.handleDonateNextClick}
+            disableCustomAmount={disableCustomAmount}
           />
         );
       case "payment-screen":
@@ -184,6 +187,7 @@ Widget.defaultProps = {
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
+  welcomeMessage: "",
 };
 
 export default Widget;

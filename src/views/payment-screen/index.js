@@ -44,7 +44,7 @@ const PaymentScreen = ({
   const updatePercentage = (counter) => {
     const difference = expiry - counter;
 
-    setRemainingPercent(100-(difference / expiry) * 100);
+    setRemainingPercent(100 - (difference / expiry) * 100);
   };
 
   const countDown = () => {
