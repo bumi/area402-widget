@@ -12,8 +12,6 @@ const WelcomeScreen = ({ onDonateClick, message }) => {
   return (
     <Container>
       <ContentWrapper>
-        <Subtitle>Thanks for your interest!</Subtitle>
-
         <Content>{message}</Content>
       </ContentWrapper>
 

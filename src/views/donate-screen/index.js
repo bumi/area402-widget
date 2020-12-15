@@ -62,8 +62,6 @@ const DonateScreen = ({
   return (
     <Container>
       <ContentWrapper>
-        <Subtitle>How much would you like to contribute?</Subtitle>
-
         <Content>
           <TagsWrapper>
             {Object.keys(paymentOptions).map((key, index) => {
