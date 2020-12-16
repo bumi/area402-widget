@@ -32,7 +32,6 @@ export const Content = styled.div`
   justify-content: center;
   flex: 1;
   width: 100%;
-  margin: 1em;
 `;
 
 export const Subtitle = styled.h4`
