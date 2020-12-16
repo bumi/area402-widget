@@ -71,6 +71,25 @@ class Widget extends Component {
     });
   };
 
+  donate = (amount = 0) => {
+    console.log(this.props);
+    const amountInCents = parseInt(amount, 10);
+
+    if (!amountInCents) {
+      alert("Please pass an amount to window.area402.donate() function");
+    } else {
+      this.setState(
+        {
+          isModalOpen: true,
+          currentScreen: "payment-loading-screen",
+        },
+        () => {
+          this.requestPaymentHandler(amountInCents);
+        },
+      );
+    }
+  };
+
   openWidget = (attributes) => {
     this.setState({
       ...getInitialState(attributes),
@@ -92,7 +111,7 @@ class Widget extends Component {
     });
   };
 
-  handleDonateNextClick = (amountInCents) => {
+  requestPaymentHandler = (amountInCents) => {
     this.setState({
       fetchingInvoiceState: true,
     });
@@ -140,7 +159,7 @@ class Widget extends Component {
             currency={currency}
             paymentOptions={paymentOptions}
             isLoading={fetchingInvoiceState}
-            onNextClick={this.handleDonateNextClick}
+            onNextClick={this.requestPaymentHandler}
             disableCustomAmount={disableCustomAmount}
           />
         );
@@ -154,6 +173,8 @@ class Widget extends Component {
             enableEmailSubscription={enableEmailSubscription}
           />
         );
+      case "payment-loading-screen":
+        return <div>Loading...</div>;
       default:
         null;
     }
