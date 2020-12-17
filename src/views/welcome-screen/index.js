@@ -15,7 +15,7 @@ const WelcomeScreen = ({ onDonateClick, message }) => {
         <Content>{message}</Content>
       </ContentWrapper>
 
-      <Button buttonClick={onDonateClick} btnText="Donate Now" />
+      <Button buttonClick={onDonateClick} btnText="Next" />
     </Container>
   );
 };
