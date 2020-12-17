@@ -15,8 +15,7 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  width: 30%;
-  height: 350px;
+  max-width: 500px;
   display: flex;
   z-index: 99;
   background: #fff;
