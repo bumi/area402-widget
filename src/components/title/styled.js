@@ -17,6 +17,7 @@ export const StyledH3 = styled.h3`
   font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
+  margin: 0 1.5em;
 `;
 
 export const IconWrapper = styled.span`
