@@ -53,7 +53,7 @@ class Widget extends Component {
         if(response.ok) {
           response.json().then(config => {
             this.widgetConfig = config;
-            this.setDefaults(config);
+            this.setDefaults();
           });
         } else {
           this.setDefaults();
