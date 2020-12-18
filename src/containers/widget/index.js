@@ -184,7 +184,10 @@ class Widget extends Component {
     return (
       <WidgetWrapper>
         <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
-          <Button buttonClick={this.openModal} />
+          <Button
+            buttonClick={this.openModal}
+            btnText={this.state.actionLabel}
+          />
 
           {isModalOpen && (
             <Modal title={widgetTitle} onRequestClose={this.closeModal}>
@@ -198,6 +201,7 @@ class Widget extends Component {
 }
 
 Widget.defaultProps = {
+  actionLabel: "Donate",
   imageSrc: "",
   currency: "EUR",
   widgetTitle: "",

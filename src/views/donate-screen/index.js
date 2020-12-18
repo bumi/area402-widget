@@ -44,6 +44,10 @@ const DonateScreen = ({
   };
 
   const getAmountInCents = (amount) => {
+    // TODO: better check for invalid amounts
+    if (amount === "") {
+      return null;
+    }
     const cents = parseFloat(amount) * 100;
 
     return parseInt(cents, 10);
@@ -52,7 +56,7 @@ const DonateScreen = ({
   const handleNextClick = () => {
     const amountInCents = getAmountInCents(donationAmount || inputAmount);
 
-    if (amountInCents < 1 || amountInCents > 10000) {
+    if (!amountInCents || typeof amountInCents !== "number" || amountInCents < 1 || amountInCents > 10000) {
       return;
     }
 
