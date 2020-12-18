@@ -16,8 +16,10 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
 
-function getInitialState(props) {
-  return Object.assign(Widget.defaultProps, props);
+// Merge various configuration objects. The last has the highest priority.
+// usage: getInitialState(this.props, {widgetTitle: "Hallo"});
+function getInitialState() {
+  return Object.assign(Widget.defaultProps, ...arguments);
 }
 
 class Widget extends Component {
@@ -45,12 +47,23 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-    this.setDefaults();
+    return fetch(`${this.props.apiBaseUrl}/v1/configuration`,
+        { headers: {"Api-Token": this.props.apiToken} })
+      .then(response => {
+        if(response.ok) {
+          response.json().then(config => {
+            this.widgetConfig = config;
+            this.setDefaults(config);
+          });
+        } else {
+          this.setDefaults();
+        }
+      });
   }
 
   setDefaults = () => {
     this.setState({
-      ...getInitialState(this.props),
+      ...getInitialState(this.props, this.widgetConfig),
       isModalOpen: false,
       invoiceDetails: null,
       fetchingInvoiceState: false,
