@@ -85,7 +85,7 @@ class Widget extends Component {
 
   openWidget = (attributes) => {
     this.setState({
-      ...getInitialState(attributes),
+      ...attributes,
       isModalOpen: true,
     });
   };
