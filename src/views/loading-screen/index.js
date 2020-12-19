@@ -15,17 +15,16 @@ const Subtitle = styled.p`
   text-align: center;
 `;
 
-const PaymentFetchingScreen = (props) => {
+const LoadingScreen = (props) => {
   return (
     <Container>
       <ContentWrapper>
         <Content>
           <Spinner {...props} />
-          <Subtitle>Fetching payment details</Subtitle>
         </Content>
       </ContentWrapper>
     </Container>
   );
 };
 
-export default PaymentFetchingScreen;
+export default LoadingScreen;

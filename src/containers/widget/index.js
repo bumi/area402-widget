@@ -10,7 +10,7 @@ import DonateScreen from "../../views/donate-screen";
 import WelcomeScreen from "../../views/welcome-screen";
 import PaymentScreen from "../../views/payment-screen";
 import ThankyouScreen from "../../views/thankyou-screen";
-import PaymentFetchingScreen from "../../views/payment-loading-screen";
+import LoadingScreen from "../../views/loading-screen";
 
 import { StyledCache } from "../../utils/styled-cache";
 import { WidgetWrapper } from "../../utils/widget-wrapper";
@@ -81,7 +81,7 @@ class Widget extends Component {
       this.setState(
         {
           isModalOpen: true,
-          currentScreen: "payment-loading-screen",
+          currentScreen: "loading-screen",
         },
         () => {
           this.requestPaymentHandler(amountInCents);
@@ -173,8 +173,8 @@ class Widget extends Component {
             enableEmailSubscription={enableEmailSubscription}
           />
         );
-      case "payment-loading-screen":
-        return <PaymentFetchingScreen height={40} width={40} color="#4761FB" />;
+      case "loading-screen":
+        return <LoadingScreen height={40} width={40} color="#4761FB" />;
       default:
         null;
     }
@@ -208,7 +208,7 @@ Widget.defaultProps = {
   showModal: false,
   disableCustomAmount: false,
   paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },
-  screenName: "payment-loading-screen",
+  screenName: "loading-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
