@@ -23,4 +23,16 @@ export const StyledH3 = styled.h3`
 export const IconWrapper = styled.span`
   cursor: pointer;
   position: absolute;
+  top: 10px;
+  right: 10px;
+`;
+
+export const Logo = styled.img`
+  border-radius: 20%;
+  max-height: 76px;
+  max-width: 228px;
+`;
+export const LogoWrapper = styled.div`
+  text-align: center;
+  width: 100%;
 `;
