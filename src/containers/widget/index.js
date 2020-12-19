@@ -61,7 +61,7 @@ class Widget extends Component {
       isModalOpen: false,
       invoiceDetails: null,
       fetchingInvoiceState: false,
-      currentScreen: this.props.welcomeMessage
+      currentScreen: initialState.welcomeMessage
         ? "welcome-screen"
         : "donate-screen",
     });
