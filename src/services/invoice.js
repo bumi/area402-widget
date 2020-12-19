@@ -59,10 +59,12 @@ export default class InvoiceService {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ memo: this.memo, amount: this.amount }),
     };
-    return this._fetch(`${this.apiBaseUrl}/v1/invoices`, args).then((invoice) => {
-      this.invoice = invoice;
-      return invoice;
-    });
+    return this._fetch(`${this.apiBaseUrl}/v1/invoices`, args).then(
+      (invoice) => {
+        this.invoice = invoice;
+        return invoice;
+      },
+    );
   }
 
   watchInvoice() {
