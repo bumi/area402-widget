@@ -72,11 +72,11 @@ class Widget extends Component {
     });
   };
 
-  donate = (amount = 0) => {
-    const amountInCents = parseInt(amount, 10);
+  donate = (args) => {
+    const amountInCents = parseInt(args.amount, 10);
 
     if (!amountInCents) {
-      alert("Please pass an amount to window.area402.donate() function");
+      console.log("Invalid amount");
     } else {
       this.setState(
         {
