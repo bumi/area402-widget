@@ -72,7 +72,7 @@ class Widget extends Component {
     });
   };
 
-  donate = (args) => {
+  requestPayment = (args) => {
     const amountInCents = parseInt(args.amount, 10);
 
     if (!amountInCents) {
