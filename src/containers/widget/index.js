@@ -10,6 +10,7 @@ import DonateScreen from "../../views/donate-screen";
 import WelcomeScreen from "../../views/welcome-screen";
 import PaymentScreen from "../../views/payment-screen";
 import ThankyouScreen from "../../views/thankyou-screen";
+import LoadingScreen from "../../views/loading-screen";
 
 import { StyledCache } from "../../utils/styled-cache";
 import { WidgetWrapper } from "../../utils/widget-wrapper";
@@ -67,8 +68,9 @@ class Widget extends Component {
       isModalOpen: false,
       invoiceDetails: null,
       fetchingInvoiceState: false,
-      currentScreen:
-        !this.props.welcomeMessage || this.props.welcomeMessage === "" ? "donate-screen" : "welcome-screen",
+      currentScreen: this.props.welcomeMessage
+        ? "welcome-screen"
+        : "donate-screen",
     });
   };
 
@@ -81,6 +83,24 @@ class Widget extends Component {
     this.setState({
       isModalOpen: true,
     });
+  };
+
+  requestPayment = (args) => {
+    const amountInCents = parseInt(args.amount, 10);
+
+    if (!amountInCents) {
+      console.log("Invalid amount");
+    } else {
+      this.setState(
+        {
+          isModalOpen: true,
+          currentScreen: "loading-screen",
+        },
+        () => {
+          this.requestPaymentHandler(amountInCents);
+        },
+      );
+    }
   };
 
   openWidget = (attributes) => {
@@ -104,7 +124,7 @@ class Widget extends Component {
     });
   };
 
-  handleDonateNextClick = (amountInCents) => {
+  requestPaymentHandler = (amountInCents) => {
     this.setState({
       fetchingInvoiceState: true,
     });
@@ -133,6 +153,7 @@ class Widget extends Component {
       invoiceDetails,
       welcomeMessage,
       paymentOptions,
+      disableCustomAmount,
       fetchingInvoiceState,
       enableEmailSubscription,
     } = this.state;
@@ -149,10 +170,10 @@ class Widget extends Component {
         return (
           <DonateScreen
             currency={currency}
-            isLoading={fetchingInvoiceState}
             paymentOptions={paymentOptions}
-            onNextClick={this.handleDonateNextClick}
-            disableCustomAmount={this.state.disableCustomAmount}
+            isLoading={fetchingInvoiceState}
+            onNextClick={this.requestPaymentHandler}
+            disableCustomAmount={disableCustomAmount}
           />
         );
       case "payment-screen":
@@ -165,6 +186,8 @@ class Widget extends Component {
             enableEmailSubscription={enableEmailSubscription}
           />
         );
+      case "loading-screen":
+        return <LoadingScreen height={40} width={40} color="#4761FB" />;
       default:
         null;
     }
@@ -174,7 +197,10 @@ class Widget extends Component {
     return (
       <WidgetWrapper>
         <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
-          <Button buttonClick={this.openModal} btnText={this.state.actionLabel} />
+          <Button
+            buttonClick={this.openModal}
+            btnText={this.state.actionLabel}
+          />
 
           {isModalOpen && (
             <Modal title={widgetTitle} onRequestClose={this.closeModal}>
@@ -195,10 +221,11 @@ Widget.defaultProps = {
   showModal: false,
   disableCustomAmount: false,
   paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },
-  screenName: "welcome-screen",
+  screenName: "loading-screen",
   enableEmailSubscription: false,
   apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
+  welcomeMessage: "",
 };
 
 export default Widget;

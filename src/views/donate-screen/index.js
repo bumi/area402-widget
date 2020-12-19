@@ -78,7 +78,7 @@ const DonateScreen = ({
                 >
                   {key}
                 </TagItem>
-              )
+              );
             })}
             {!disableCustomAmount && (
               <CustomInput
@@ -89,7 +89,6 @@ const DonateScreen = ({
               />
             )}
           </TagsWrapper>
-
         </Content>
       </ContentWrapper>
 

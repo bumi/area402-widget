@@ -21,7 +21,7 @@ export const ContentWrapper = styled.div`
 export const Content = styled.div`
   display: flex;
   font-style: normal;
-  font-size: 1.0rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0em;
