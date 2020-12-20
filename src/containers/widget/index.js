@@ -18,7 +18,7 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
 
 // Merge various configuration objects. The last has the highest priority.
-// usage: getInitialState(this.props, {widgetTitle: "Hallo"});
+// usage: getInitialState(this.props, {title: "Hallo"});
 function getInitialState() {
   return Object.assign(Widget.defaultProps, ...arguments);
 }
@@ -141,7 +141,7 @@ class Widget extends Component {
   renderModalContent = () => {
     const {
       currency,
-      widgetTitle,
+      title,
       currentScreen,
       invoiceDetails,
       welcomeMessage,
@@ -174,7 +174,7 @@ class Widget extends Component {
       case "thankyou-screen":
         return (
           <ThankyouScreen
-            title={widgetTitle}
+            title={title}
             onSubscribeClick={this.handleSubscribeClick}
             enableEmailSubscription={enableEmailSubscription}
           />
@@ -186,7 +186,7 @@ class Widget extends Component {
     }
   };
 
-  render({}, { widgetTitle, isModalOpen }) {
+  render({}, { title, logo, isModalOpen }) {
     return (
       <WidgetWrapper>
         <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
@@ -196,7 +196,7 @@ class Widget extends Component {
           />
 
           {isModalOpen && (
-            <Modal title={widgetTitle} onRequestClose={this.closeModal}>
+            <Modal title={title} logo={logo} onRequestClose={this.closeModal}>
               {this.renderModalContent()}
             </Modal>
           )}
@@ -210,7 +210,8 @@ Widget.defaultProps = {
   actionLabel: "Donate",
   imageSrc: "",
   currency: "EUR",
-  widgetTitle: "",
+  title: "",
+  logo: "",
   showModal: false,
   disableCustomAmount: false,
   paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },

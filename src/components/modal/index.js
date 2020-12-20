@@ -10,7 +10,7 @@ import {
   ModalContainer,
 } from "./styled";
 
-const Modal = ({ onRequestClose, children, title }) => {
+const Modal = ({ onRequestClose, children, title, logo }) => {
   const onKeyDown = (event) => {
     if (event.keyCode === 27) {
       // Close the modal when the Escape key is pressed
@@ -38,7 +38,7 @@ const Modal = ({ onRequestClose, children, title }) => {
         <BottomCircle />
 
         <ModalContainer>
-          <Title title={title} onRequestClose={onRequestClose} />
+          <Title title={title} logo={logo} onRequestClose={onRequestClose} />
 
           {children}
         </ModalContainer>
