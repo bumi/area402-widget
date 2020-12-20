@@ -27,15 +27,7 @@ class Widget extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      // storing props in local state
-      ...getInitialState(props),
-
-      invoiceDetails: null,
-      fetchingInvoiceState: false,
-      currentScreen: props.welcomeMessage ? "welcome-screen" : "donate-screen",
-    };
-
+    this.setDefaults();
     this.invoiceService = new InvoiceService({
       apiToken: this.props.apiToken,
       apiBaseUrl: this.props.apiBaseUrl,
@@ -63,12 +55,13 @@ class Widget extends Component {
   }
 
   setDefaults = () => {
+    const initialState = getInitialState(this.props, this.widgetConfig);
     this.setState({
-      ...getInitialState(this.props, this.widgetConfig),
+      ...initialState,
       isModalOpen: false,
       invoiceDetails: null,
       fetchingInvoiceState: false,
-      currentScreen: this.props.welcomeMessage
+      currentScreen: initialState.welcomeMessage
         ? "welcome-screen"
         : "donate-screen",
     });
