@@ -12,12 +12,12 @@ import PaymentScreen from "../../views/payment-screen";
 import ThankyouScreen from "../../views/thankyou-screen";
 import LoadingScreen from "../../views/loading-screen";
 
-import { StyledCache } from "../../utils/styled-cache";
-import { WidgetWrapper } from "../../utils/widget-wrapper";
 import {
   DEFAULT_API_BASE_URL,
   DEFAULT_BASE_CLASSNAME,
 } from "../../utils/constants";
+import { StyledCache } from "../../utils/styled-cache";
+import { WidgetWrapper } from "../../utils/widget-wrapper";
 
 // Merge various configuration objects. The last has the highest priority.
 // usage: getInitialState(this.props, {title: "Hallo"});
@@ -141,44 +141,32 @@ class Widget extends Component {
   };
 
   renderModalContent = () => {
-    const {
-      currency,
-      title,
-      currentScreen,
-      invoiceDetails,
-      welcomeMessage,
-      paymentOptions,
-      disableCustomAmount,
-      fetchingInvoiceState,
-      enableEmailSubscription,
-    } = this.state;
-
-    switch (currentScreen) {
+    switch (this.state.currentScreen) {
       case "welcome-screen":
         return (
           <WelcomeScreen
-            message={welcomeMessage}
+            message={this.state.welcomeMessage}
             onDonateClick={this.handleDonateClick}
           />
         );
       case "donate-screen":
         return (
           <DonateScreen
-            currency={currency}
-            paymentOptions={paymentOptions}
-            isLoading={fetchingInvoiceState}
+            currency={this.state.currency}
+            paymentOptions={this.state.paymentOptions}
+            isLoading={this.state.fetchingInvoiceState}
             onNextClick={this.requestPaymentHandler}
-            disableCustomAmount={disableCustomAmount}
+            disableCustomAmount={this.state.disableCustomAmount}
           />
         );
       case "payment-screen":
-        return <PaymentScreen {...invoiceDetails} />;
+        return <PaymentScreen {...this.state.invoiceDetails} />;
       case "thankyou-screen":
         return (
           <ThankyouScreen
-            title={title}
+            title={this.state.title}
             onSubscribeClick={this.handleSubscribeClick}
-            enableEmailSubscription={enableEmailSubscription}
+            enableEmailSubscription={this.state.enableEmailSubscription}
           />
         );
       case "loading-screen":
