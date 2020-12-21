@@ -4,7 +4,7 @@ import Close from "../icons/close";
 import { StyledH3, TitleWrapper, IconWrapper, Logo, LogoWrapper } from "./styled";
 
 const Title = ({ title, logo, onRequestClose }) => (
-  <TitleWrapper>
+  <TitleWrapper className="__fourohtwo-title">
     { logo && (
       <LogoWrapper>
         <Logo src={logo} title={title} alt={title} />

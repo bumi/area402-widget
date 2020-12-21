@@ -102,7 +102,7 @@ const PaymentScreen = ({
         </Content>
       </ContentWrapper>
 
-      <Button href={`lightning:${payment_request}`}>Open Wallet</Button>
+      <Button href={`lightning:${payment_request}`} className="__fourohtwo-button">Open Wallet</Button>
 
       <CountdownText>{`${countdownTime.minutes} min ${countdownTime.seconds} sec left`}</CountdownText>
 

@@ -67,7 +67,7 @@ const DonateScreen = ({
     <Container>
       <ContentWrapper>
         <Content>
-          <TagsWrapper>
+          <TagsWrapper className="__fourohtwo-payment-options">
             {Object.keys(paymentOptions).map((key, index) => {
               const amount = paymentOptions[key];
               return (
@@ -75,6 +75,7 @@ const DonateScreen = ({
                   key={index}
                   onClick={() => onTagSelect(amount)}
                   selected={amount === donationAmount}
+                  className="__fourohtwo-payment-option-select"
                 >
                   {key}
                 </TagItem>
@@ -86,6 +87,7 @@ const DonateScreen = ({
                 value={inputAmount}
                 onChange={handleCustomInput}
                 placeholder="_€"
+                className="__fourohtwo-payment-option-input"
               />
             )}
           </TagsWrapper>

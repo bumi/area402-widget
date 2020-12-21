@@ -7,7 +7,7 @@ export const StyledCache = (key, scope) => {
     key: key || "fourohtwo",
     stylisPlugins: [
       prefixer, // default, required
-      extraScopePlugin(scope || ".fourohtwo-widget"), // add a custom scope to make get a higher specificity than the reset CSS
+      extraScopePlugin(scope || ".__fourohtwo"), // add a custom scope to make get a higher specificity than the reset CSS
     ],
   });
 };

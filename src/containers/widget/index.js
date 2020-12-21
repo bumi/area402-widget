@@ -189,7 +189,7 @@ class Widget extends Component {
   render({}, { title, logo, isModalOpen }) {
     return (
       <WidgetWrapper>
-        <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
+        <CacheProvider value={StyledCache("fourohtwo", ".__fourohtwo")}>
           <Button
             buttonClick={this.openModal}
             btnText={this.state.actionLabel}

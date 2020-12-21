@@ -37,7 +37,7 @@ const Modal = ({ onRequestClose, children, title, logo }) => {
         <TopCircle />
         <BottomCircle />
 
-        <ModalContainer>
+        <ModalContainer className="__fourohtwo-container">
           <Title title={title} logo={logo} onRequestClose={onRequestClose} />
 
           {children}
