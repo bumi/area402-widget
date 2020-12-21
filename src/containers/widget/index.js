@@ -14,8 +14,10 @@ import LoadingScreen from "../../views/loading-screen";
 
 import { StyledCache } from "../../utils/styled-cache";
 import { WidgetWrapper } from "../../utils/widget-wrapper";
-
-const DEFAULT_API_BASE_URL = "https://area402.herokuapp.com";
+import {
+  DEFAULT_API_BASE_URL,
+  DEFAULT_BASE_CLASSNAME,
+} from "../../utils/constants";
 
 // Merge various configuration objects. The last has the highest priority.
 // usage: getInitialState(this.props, {title: "Hallo"});
@@ -40,18 +42,18 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-    return fetch(`${this.props.apiBaseUrl}/v1/configuration`,
-        { headers: {"Api-Token": this.props.apiToken} })
-      .then(response => {
-        if(response.ok) {
-          response.json().then(config => {
-            this.widgetConfig = config;
-            this.setDefaults();
-          });
-        } else {
+    return fetch(`${this.props.apiBaseUrl}/v1/configuration`, {
+      headers: { "Api-Token": this.props.apiToken },
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((config) => {
+          this.widgetConfig = config;
           this.setDefaults();
-        }
-      });
+        });
+      } else {
+        this.setDefaults();
+      }
+    });
   }
 
   setDefaults = () => {
@@ -189,7 +191,9 @@ class Widget extends Component {
   render({}, { title, logo, isModalOpen }) {
     return (
       <WidgetWrapper>
-        <CacheProvider value={StyledCache("fourohtwo", ".__fourohtwo")}>
+        <CacheProvider
+          value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
+        >
           <Button
             buttonClick={this.openModal}
             btnText={this.state.actionLabel}

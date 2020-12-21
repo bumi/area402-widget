@@ -1,7 +1,6 @@
 import { h } from "preact";
 import { useEffect } from "preact/hooks";
 
-import Title from "../title";
 import {
   Backdrop,
   TopCircle,
@@ -9,6 +8,8 @@ import {
   ModalWrapper,
   ModalContainer,
 } from "./styled";
+import Title from "../title";
+import { DEFAULT_BASE_CLASSNAME } from "../../utils/constants";
 
 const Modal = ({ onRequestClose, children, title, logo }) => {
   const onKeyDown = (event) => {
@@ -37,7 +38,7 @@ const Modal = ({ onRequestClose, children, title, logo }) => {
         <TopCircle />
         <BottomCircle />
 
-        <ModalContainer className="__fourohtwo-container">
+        <ModalContainer className={`${DEFAULT_BASE_CLASSNAME}-container`}>
           <Title title={title} logo={logo} onRequestClose={onRequestClose} />
 
           {children}
