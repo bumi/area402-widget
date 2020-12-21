@@ -6,7 +6,7 @@ import Widget from "./containers/widget";
 let _habitat = habitat(Widget);
 
 _habitat.render({
-  selector: '.fourohtwo-widget',
+  selector: '.__fourohtwo',
   clean: true,
   component: "area402",
 });

@@ -16,6 +16,7 @@ import {
 } from "./styled";
 import Copy from "../../components/icons/copy";
 import { secondsToHms } from "../../utils/helper";
+import { DEFAULT_BASE_CLASSNAME } from "../../utils/constants";
 
 const PaymentScreen = ({
   value,
@@ -102,7 +103,12 @@ const PaymentScreen = ({
         </Content>
       </ContentWrapper>
 
-      <Button href={`lightning:${payment_request}`}>Open Wallet</Button>
+      <Button
+        href={`lightning:${payment_request}`}
+        className={`${DEFAULT_BASE_CLASSNAME}-button`}
+      >
+        Open Wallet
+      </Button>
 
       <CountdownText>{`${countdownTime.minutes} min ${countdownTime.seconds} sec left`}</CountdownText>
 

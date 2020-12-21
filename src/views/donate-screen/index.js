@@ -9,6 +9,7 @@ import {
 } from "../../utils/common-styles";
 import Button from "../../components/button";
 import { TagItem, CustomInput, TagsWrapper } from "./styled";
+import { DEFAULT_BASE_CLASSNAME } from "../../utils/constants";
 
 const DonateScreen = ({
   currency,
@@ -56,7 +57,12 @@ const DonateScreen = ({
   const handleNextClick = () => {
     const amountInCents = getAmountInCents(donationAmount || inputAmount);
 
-    if (!amountInCents || typeof amountInCents !== "number" || amountInCents < 1 || amountInCents > 10000) {
+    if (
+      !amountInCents ||
+      typeof amountInCents !== "number" ||
+      amountInCents < 1 ||
+      amountInCents > 10000
+    ) {
       return;
     }
 
@@ -67,7 +73,7 @@ const DonateScreen = ({
     <Container>
       <ContentWrapper>
         <Content>
-          <TagsWrapper>
+          <TagsWrapper className={`${DEFAULT_BASE_CLASSNAME}-payment-options`}>
             {Object.keys(paymentOptions).map((key, index) => {
               const amount = paymentOptions[key];
               return (
@@ -75,6 +81,7 @@ const DonateScreen = ({
                   key={index}
                   onClick={() => onTagSelect(amount)}
                   selected={amount === donationAmount}
+                  className={`${DEFAULT_BASE_CLASSNAME}-payment-option-select`}
                 >
                   {key}
                 </TagItem>
@@ -83,9 +90,10 @@ const DonateScreen = ({
             {!disableCustomAmount && (
               <CustomInput
                 type="number"
+                placeholder="_€"
                 value={inputAmount}
                 onChange={handleCustomInput}
-                placeholder="_€"
+                className={`${DEFAULT_BASE_CLASSNAME}-payment-option-input`}
               />
             )}
           </TagsWrapper>

@@ -12,6 +12,10 @@ import PaymentScreen from "../../views/payment-screen";
 import ThankyouScreen from "../../views/thankyou-screen";
 import LoadingScreen from "../../views/loading-screen";
 
+import {
+  DEFAULT_API_BASE_URL,
+  DEFAULT_BASE_CLASSNAME,
+} from "../../utils/constants";
 import { StyledCache } from "../../utils/styled-cache";
 import { WidgetWrapper } from "../../utils/widget-wrapper";
 
@@ -38,18 +42,18 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-    return fetch(`${this.props.apiBaseUrl}/v1/configuration`,
-        { headers: {"Api-Token": this.props.apiToken} })
-      .then(response => {
-        if(response.ok) {
-          response.json().then(config => {
-            this.widgetConfig = config;
-            this.setDefaults();
-          });
-        } else {
+    return fetch(`${this.props.apiBaseUrl}/v1/configuration`, {
+      headers: { "Api-Token": this.props.apiToken },
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((config) => {
+          this.widgetConfig = config;
           this.setDefaults();
-        }
-      });
+        });
+      } else {
+        this.setDefaults();
+      }
+    });
   }
 
   setDefaults = () => {
@@ -175,7 +179,9 @@ class Widget extends Component {
   render({}, { title, logo, isModalOpen }) {
     return (
       <WidgetWrapper>
-        <CacheProvider value={StyledCache("fourohtwo", ".fourohtwo-widget")}>
+        <CacheProvider
+          value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
+        >
           <Button
             buttonClick={this.openModal}
             btnText={this.state.actionLabel}
@@ -203,7 +209,7 @@ Widget.defaultProps = {
   paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },
   screenName: "loading-screen",
   enableEmailSubscription: false,
-  apiBaseUrl: "https://area402.herokuapp.com",
+  apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
   welcomeMessage: "",
 };
