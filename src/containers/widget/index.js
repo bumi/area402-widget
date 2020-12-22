@@ -163,7 +163,7 @@ class Widget extends Component {
           />
         );
       case "loading-screen":
-        return <LoadingScreen height={40} width={40} color="#4761FB" />;
+        return <LoadingScreen height={40} width={40} color="var(--primary-color)" />;
       default:
         null;
     }

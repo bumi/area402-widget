@@ -11,7 +11,7 @@ const Button = ({ buttonClick, btnText, isLoading }) => (
     onClick={buttonClick}
     className={`${DEFAULT_BASE_CLASSNAME}-button`}
   >
-    {isLoading ? <Spinner /> : btnText}
+    {isLoading ? <Spinner color="#fff" /> : btnText}
   </StyledButton>
 );
 
