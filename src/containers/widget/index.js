@@ -25,9 +25,6 @@ function getInitialState() {
   const initialState = Object.assign(Widget.defaultProps, ...arguments);
   return {
     ...initialState,
-    isModalOpen: false,
-    invoiceDetails: null,
-    fetchingInvoiceState: false,
     currentScreen: initialState.welcomeMessage
       ? "welcome-screen"
       : "donate-screen",
@@ -45,8 +42,6 @@ class Widget extends Component {
       paymentRequestRenderer: this.paymentRequestRenderer,
     });
   }
-
-  componentWillUnmount() {}
 
   componentDidMount() {
     return fetch(`${this.props.apiBaseUrl}/v1/configuration`, {
@@ -202,7 +197,6 @@ Widget.defaultProps = {
   currency: "EUR",
   title: "",
   logo: "",
-  showModal: false,
   disableCustomAmount: false,
   paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },
   screenName: "loading-screen",
@@ -210,6 +204,9 @@ Widget.defaultProps = {
   apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
   welcomeMessage: "",
+  isModalOpen: false,
+  invoiceDetails: null,
+  fetchingInvoiceState: false,
 };
 
 export default Widget;
