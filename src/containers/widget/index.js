@@ -164,7 +164,7 @@ class Widget extends Component {
       case "thankyou-screen":
         return (
           <ThankyouScreen
-            title={this.state.title}
+            thankyouMessage={this.state.thankyouMessage}
             onSubscribeClick={this.handleSubscribeClick}
             enableEmailSubscription={this.state.enableEmailSubscription}
           />
@@ -212,6 +212,7 @@ Widget.defaultProps = {
   apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
   welcomeMessage: "",
+  thankyouMessage: "Thank you!"
 };
 
 export default Widget;

@@ -2,7 +2,7 @@ import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
 import Button from "../../components/button";
-import ThankyouIcon from "../../components/icons/thankyou";
+import TadaIcon from "../../components/icons/tada";
 import {
   Content,
   Subtitle,
@@ -14,7 +14,7 @@ import {
   ContentWrapper,
 } from "./styled";
 
-const ThankyouScreen = ({ onSubscribeClick, enableEmailSubscription }) => {
+const ThankyouScreen = ({ onSubscribeClick, enableEmailSubscription, thankyouMessage}) => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -34,10 +34,10 @@ const ThankyouScreen = ({ onSubscribeClick, enableEmailSubscription }) => {
   return (
     <Container>
       <ContentWrapper>
-        <Subtitle>Thank you for your support</Subtitle>
+        <Subtitle>{thankyouMessage}</Subtitle>
 
         <Content>
-          <ThankyouIcon />
+          <TadaIcon width="70" />
 
           {enableEmailSubscription && (
             <div>
@@ -69,6 +69,7 @@ const ThankyouScreen = ({ onSubscribeClick, enableEmailSubscription }) => {
 
 ThankyouScreen.defaultProps = {
   onSubscribeClick: () => {},
+  thankyouMessage: "Thank you!",
 };
 
 export default ThankyouScreen;
