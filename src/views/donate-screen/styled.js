@@ -23,6 +23,7 @@ export const TagItem = styled.span(
     text-align: center;
 
     &:hover {
+      border-color: black;
       border-color: var(--primary-color);
     }
 
@@ -37,6 +38,7 @@ export const TagItem = styled.span(
     ${
       props.selected &&
       `
+        border-color: black;
         border-color: var(--primary-color);
       `
     }
@@ -60,6 +62,7 @@ export const CustomInput = styled.input`
   &:focus,
   &:hover {
     outline: none;
+    border-color: black;
     border-color: var(--primary-color);
   }
 `;

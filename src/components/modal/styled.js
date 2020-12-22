@@ -41,6 +41,7 @@ const TopCircleWrapper = styled.div`
   width: 100%;
   z-index: -1;
   svg {
+    fill: black;
     fill: var(--primary-color);
     fill-opacity: 0.07;
   }
@@ -61,6 +62,7 @@ const BottomCirlceWrapper = styled.div`
   text-align: end;
   z-index: -1;
   svg {
+    fill: black;
     fill: var(--primary-color);
     fill-opacity: 0.07;
   }
