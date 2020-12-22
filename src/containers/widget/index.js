@@ -22,23 +22,25 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 // Merge various configuration objects. The last has the highest priority.
 // usage: getInitialState(this.props, {title: "Hallo"});
 function getInitialState() {
-  return Object.assign(Widget.defaultProps, ...arguments);
+  const initialState = Object.assign(Widget.defaultProps, ...arguments);
+  return {
+    ...initialState,
+    currentScreen: initialState.welcomeMessage
+      ? "welcome-screen"
+      : "donate-screen",
+  }
 }
 
 class Widget extends Component {
   constructor(props) {
     super(props);
 
-    this.setDefaults();
+    this.state = getInitialState(props);
     this.invoiceService = new InvoiceService({
       apiToken: this.props.apiToken,
       apiBaseUrl: this.props.apiBaseUrl,
       paymentRequestRenderer: this.paymentRequestRenderer,
     });
-  }
-
-  componentWillUnmount() {
-    this.setDefaults();
   }
 
   componentDidMount() {
@@ -57,16 +59,7 @@ class Widget extends Component {
   }
 
   setDefaults = () => {
-    const initialState = getInitialState(this.props, this.widgetConfig);
-    this.setState({
-      ...initialState,
-      isModalOpen: false,
-      invoiceDetails: null,
-      fetchingInvoiceState: false,
-      currentScreen: initialState.welcomeMessage
-        ? "welcome-screen"
-        : "donate-screen",
-    });
+    this.setState(getInitialState(this.props, this.widgetConfig));
   };
 
   closeModal = () => {
@@ -204,7 +197,6 @@ Widget.defaultProps = {
   currency: "EUR",
   title: "",
   logo: "",
-  showModal: false,
   disableCustomAmount: false,
   paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },
   screenName: "loading-screen",
@@ -212,7 +204,10 @@ Widget.defaultProps = {
   apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
   welcomeMessage: "",
-  thankyouMessage: "Thank you!"
+  thankyouMessage: "Thank you!",
+  isModalOpen: false,
+  invoiceDetails: null,
+  fetchingInvoiceState: false,
 };
 
 export default Widget;
