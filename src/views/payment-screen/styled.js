@@ -37,6 +37,8 @@ export const ClipboardWrapper = styled.div`
 
 export const ClipboardText = styled.input`
   border: none;
+  padding: 0;
+  margin: 0;
   outline: none;
   color: #3e396b;
   font-size: 0.8rem;

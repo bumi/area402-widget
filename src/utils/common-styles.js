@@ -43,4 +43,6 @@ export const Subtitle = styled.h4`
   line-height: 1.5;
   letter-spacing: 0em;
   text-align: center;
+  padding: 0;
+  margin: 0;
 `;
