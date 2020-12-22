@@ -149,7 +149,7 @@ class Widget extends Component {
             paymentOptions={this.state.paymentOptions}
             isLoading={this.state.fetchingInvoiceState}
             onNextClick={this.requestPaymentHandler}
-            disableCustomAmount={this.state.disableCustomAmount}
+            customAmount={this.state.customAmount}
           />
         );
       case "payment-screen":
@@ -199,7 +199,7 @@ Widget.defaultProps = {
   currency: "EUR",
   title: "",
   logo: "",
-  disableCustomAmount: false,
+  customAmount: true,
   paymentOptions: { "1€": 1, "2€": 2, "5€": 5, "10€": 10 },
   screenName: "loading-screen",
   enableEmailSubscription: false,

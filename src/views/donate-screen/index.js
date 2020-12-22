@@ -16,7 +16,7 @@ const DonateScreen = ({
   isLoading,
   onNextClick,
   paymentOptions,
-  disableCustomAmount,
+  customAmount,
 }) => {
   const [inputAmount, setInputAmount] = useState("");
   const [donationAmount, setDonationAmount] = useState("");
@@ -87,7 +87,7 @@ const DonateScreen = ({
                 </TagItem>
               );
             })}
-            {!disableCustomAmount && (
+            {customAmount && (
               <CustomInput
                 type="number"
                 placeholder="_€"
@@ -111,6 +111,7 @@ const DonateScreen = ({
 
 DonateScreen.defaultProps = {
   onNextClick: () => {},
+  customAmount: true,
 };
 
 export default DonateScreen;
