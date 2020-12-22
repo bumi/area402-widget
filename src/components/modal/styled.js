@@ -33,7 +33,7 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   font-family: "Open Sans", "Lucida Sans", Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1em;
 `;
 
 const TopCircleWrapper = styled.div`

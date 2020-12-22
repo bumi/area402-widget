@@ -7,6 +7,8 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 0 30px 25px 30px;
+  font-size: 14px;
+  font-size: var(--font-size);
 `;
 
 export const ContentWrapper = styled.div`
@@ -21,7 +23,7 @@ export const ContentWrapper = styled.div`
 export const Content = styled.div`
   display: flex;
   font-style: normal;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0em;
@@ -37,7 +39,7 @@ export const Content = styled.div`
 
 export const Subtitle = styled.h4`
   font-family: "Open Sans", "Lucida Sans", Helvetica, Arial, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.1em;
   font-style: normal;
   font-weight: 600;
   line-height: 1.5;

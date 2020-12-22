@@ -7,7 +7,8 @@ export const StyledButton = styled.button`
   margin: 3px;
   outline: none;
   text-align: center;
-  font-size: 1rem;
+  font-size: 14px;
+  font-size: var(--font-size);
   font-weight: 400;
   line-height: 1.5;
   font-style: normal;

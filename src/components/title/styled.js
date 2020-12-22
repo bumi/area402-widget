@@ -6,6 +6,8 @@ export const TitleWrapper = styled.div`
   align-items: center;
   padding: 25px 20px 20px;
   flex-direction: row-reverse;
+  font-size: 14px;
+  font-size: var(--font-size);
 `;
 
 export const HiddenBlock = styled.div`
@@ -14,7 +16,7 @@ export const HiddenBlock = styled.div`
 
 export const StyledH3 = styled.h3`
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: 600;
   text-align: center;
   margin: 0 1.5em;

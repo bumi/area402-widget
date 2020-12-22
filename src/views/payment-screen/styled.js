@@ -41,7 +41,7 @@ export const ClipboardText = styled.input`
   margin: 0;
   outline: none;
   color: #3e396b;
-  font-size: 0.8rem;
+  font-size: 0.8em;
   overflow: hidden;
   line-height: 16px;
   font-style: normal;
@@ -59,7 +59,8 @@ export const Button = styled.a`
   margin: 3px;
   outline: none;
   text-align: center;
-  font-size: 1rem;
+  font-size: 14px;
+  font-size: var(--font-size);
   font-weight: 400;
   line-height: 1.5;
   font-style: normal;
@@ -104,7 +105,7 @@ export const Button = styled.a`
 export const CountdownText = styled.div`
   color: #3e396b;
   margin-top: 1em;
-  font-size: 0.7rem;
+  font-size: 0.7em;
   font-weight: 400;
   line-height: 1.5;
   font-style: normal;
