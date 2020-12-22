@@ -178,7 +178,7 @@ class Widget extends Component {
 
   render({}, { title, logo, isModalOpen }) {
     return (
-      <WidgetWrapper>
+      <WidgetWrapper className={`${DEFAULT_BASE_CLASSNAME}-wrapper`}>
         <CacheProvider
           value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
         >

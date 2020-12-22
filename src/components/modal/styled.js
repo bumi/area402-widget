@@ -40,12 +40,16 @@ const TopCircleWrapper = styled.div`
   position: absolute;
   width: 100%;
   z-index: -1;
+  svg {
+    fill: var(--primary-color);
+    fill-opacity: 0.07;
+  }
 `;
 
 export const TopCircle = () => (
   <TopCircleWrapper>
     <svg width="180" height="130" viewBox="0 0 180 130" fill="none">
-      <circle cx="-40" cy="-100" r="232" fill="#4761FB" fill-opacity="0.07" />
+      <circle cx="-40" cy="-100" r="232" />
     </svg>
   </TopCircleWrapper>
 );
@@ -56,12 +60,16 @@ const BottomCirlceWrapper = styled.div`
   bottom: -5px;
   text-align: end;
   z-index: -1;
+  svg {
+    fill: var(--primary-color);
+    fill-opacity: 0.07;
+  }
 `;
 
 export const BottomCircle = () => (
   <BottomCirlceWrapper>
     <svg width="160" height="114" viewBox="0 0 160 114" fill="none">
-      <circle cx="178" cy="178" r="178" fill="#4761FB" fill-opacity="0.07" />
+      <circle cx="178" cy="178" r="178" />
     </svg>
   </BottomCirlceWrapper>
 );
