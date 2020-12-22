@@ -22,14 +22,23 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 // Merge various configuration objects. The last has the highest priority.
 // usage: getInitialState(this.props, {title: "Hallo"});
 function getInitialState() {
-  return Object.assign(Widget.defaultProps, ...arguments);
+  const initialState = Object.assign(Widget.defaultProps, ...arguments);
+  return {
+    ...initialState,
+    isModalOpen: false,
+    invoiceDetails: null,
+    fetchingInvoiceState: false,
+    currentScreen: initialState.welcomeMessage
+      ? "welcome-screen"
+      : "donate-screen",
+  }
 }
 
 class Widget extends Component {
   constructor(props) {
     super(props);
 
-    this.setDefaults();
+    this.state = getInitialState(props);
     this.invoiceService = new InvoiceService({
       apiToken: this.props.apiToken,
       apiBaseUrl: this.props.apiBaseUrl,
@@ -37,9 +46,7 @@ class Widget extends Component {
     });
   }
 
-  componentWillUnmount() {
-    this.setDefaults();
-  }
+  componentWillUnmount() {}
 
   componentDidMount() {
     return fetch(`${this.props.apiBaseUrl}/v1/configuration`, {
@@ -57,16 +64,7 @@ class Widget extends Component {
   }
 
   setDefaults = () => {
-    const initialState = getInitialState(this.props, this.widgetConfig);
-    this.setState({
-      ...initialState,
-      isModalOpen: false,
-      invoiceDetails: null,
-      fetchingInvoiceState: false,
-      currentScreen: initialState.welcomeMessage
-        ? "welcome-screen"
-        : "donate-screen",
-    });
+    this.setState(getInitialState(this.props, this.widgetConfig));
   };
 
   closeModal = () => {
