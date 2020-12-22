@@ -2,6 +2,7 @@ import { h } from "preact";
 import habitat from "preact-habitat";
 
 import Widget from "./containers/widget";
+import Inline  from "./containers/inline";
 
 let _habitat = habitat(Widget);
 
