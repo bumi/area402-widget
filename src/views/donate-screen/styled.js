@@ -38,7 +38,6 @@ export const TagItem = styled.span(
       props.selected &&
       `
         border-color: var(--primary-color);
-        border-color: #b692ff;
       `
     }
   `,
