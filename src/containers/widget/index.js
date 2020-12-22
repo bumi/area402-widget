@@ -169,16 +169,18 @@ class Widget extends Component {
     }
   };
 
-  render({}, { title, logo, isModalOpen }) {
+  render({}, { title, logo, actionLabel, isModalOpen }) {
     return (
       <WidgetWrapper className={`${DEFAULT_BASE_CLASSNAME}-wrapper`}>
         <CacheProvider
           value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
         >
+        {actionLabel && (
           <Button
             buttonClick={this.openModal}
-            btnText={this.state.actionLabel}
+            btnText={actionLabel}
           />
+        )}
 
           {isModalOpen && (
             <Modal title={title} logo={logo} onRequestClose={this.closeModal}>
