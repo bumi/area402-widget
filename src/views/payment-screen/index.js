@@ -116,8 +116,8 @@ const PaymentScreen = ({
         percent={remainingPercent}
         trailWidth="1"
         strokeWidth="1"
-        trailColor="#91A0FD"
-        strokeColor="#4761FB"
+        trailColor="#ccc"
+        strokeColor="var(--primary-color)"
       />
     </Container>
   );

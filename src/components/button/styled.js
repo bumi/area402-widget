@@ -16,7 +16,8 @@ export const StyledButton = styled.button`
   transition: box-shadow 100ms ease-in-out;
   pointer-events: ${(p) => (p.loading ? "none" : "auto")};
   cursor: ${(p) => (p.loading ? "not-allowed" : "pointer")};
-  background: linear-gradient(90deg, #764dfb 0%, #4761fb 100%);
+  background: linear-gradient(90deg, black 0%, black 100%);
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 100%);
 
   position: relative;
   display: inline-block;

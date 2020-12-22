@@ -157,7 +157,7 @@ class Widget extends Component {
       case "thankyou-screen":
         return (
           <ThankyouScreen
-            title={this.state.title}
+            thankyouMessage={this.state.thankyouMessage}
             onSubscribeClick={this.handleSubscribeClick}
             enableEmailSubscription={this.state.enableEmailSubscription}
           />
@@ -171,7 +171,7 @@ class Widget extends Component {
 
   render({}, { title, logo, isModalOpen }) {
     return (
-      <WidgetWrapper>
+      <WidgetWrapper className={`${DEFAULT_BASE_CLASSNAME}-wrapper`}>
         <CacheProvider
           value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
         >
@@ -204,6 +204,7 @@ Widget.defaultProps = {
   apiBaseUrl: DEFAULT_API_BASE_URL,
   apiToken: "",
   welcomeMessage: "",
+  thankyouMessage: "Thank you!",
   isModalOpen: false,
   invoiceDetails: null,
   fetchingInvoiceState: false,

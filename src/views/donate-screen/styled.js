@@ -23,8 +23,8 @@ export const TagItem = styled.span(
     text-align: center;
 
     &:hover {
-      border-color: #b692ff;
-      background-color: #f6f2ff;
+      border-color: black;
+      border-color: var(--primary-color);
     }
 
     &:first-of-type {
@@ -38,8 +38,8 @@ export const TagItem = styled.span(
     ${
       props.selected &&
       `
-        border-color: #b692ff;
-        background-color: #f6f2ff;
+        border-color: black;
+        border-color: var(--primary-color);
       `
     }
   `,
@@ -62,6 +62,7 @@ export const CustomInput = styled.input`
   &:focus,
   &:hover {
     outline: none;
-    border-color: #b692ff;
+    border-color: black;
+    border-color: var(--primary-color);
   }
 `;

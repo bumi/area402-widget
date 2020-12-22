@@ -9,7 +9,7 @@ export const Container = styled(StyledContainer)`
 `;
 
 export const AmountPlaceholder = styled.span`
-  color: #4761fb;
+  color: var(--primary-color);
 `;
 
 export const ClipboardWrapper = styled.div`
@@ -31,7 +31,7 @@ export const ClipboardWrapper = styled.div`
     padding: 0px;
     width: 15px;
     height: 15px;
-    fill: #4761FB;
+    fill: var(--primary-color);
   }
 `;
 
@@ -66,11 +66,10 @@ export const Button = styled.a`
   transition: box-shadow 100ms ease-in-out;
   pointer-events: ${(p) => (p.loading ? "none" : "auto")};
   cursor: ${(p) => (p.loading ? "not-allowed" : "pointer")};
-  background: linear-gradient(90deg, #764dfb 0%, #4761fb 100%);
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 100%);
 
   position: relative;
   display: inline-block;
-  background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
