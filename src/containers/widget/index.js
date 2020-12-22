@@ -175,12 +175,12 @@ class Widget extends Component {
         <CacheProvider
           value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
         >
-        {actionLabel && (
-          <Button
-            buttonClick={this.openModal}
-            btnText={actionLabel}
-          />
-        )}
+          {actionLabel && (
+            <Button
+              buttonClick={this.openModal}
+              btnText={actionLabel}
+            />
+          )}
 
           {isModalOpen && (
             <Modal title={title} logo={logo} onRequestClose={this.closeModal}>
