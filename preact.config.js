@@ -9,7 +9,7 @@ export default (config, env, helpers) => {
     "@emotion",
     {
       sourceMap: true,
-      autoLabel: "dev-only"
+      autoLabel: "dev-only",
     },
   ]);
 
