@@ -14,7 +14,11 @@ import {
   ContentWrapper,
 } from "./styled";
 
-const ThankyouScreen = ({ onSubscribeClick, enableEmailSubscription, thankyouMessage}) => {
+const ThankyouScreen = ({
+  onSubscribeClick,
+  enableEmailSubscription,
+  thankyouMessage,
+}) => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {

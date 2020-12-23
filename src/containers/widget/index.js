@@ -28,7 +28,7 @@ function getInitialState() {
     currentScreen: initialState.welcomeMessage
       ? "welcome-screen"
       : "donate-screen",
-  }
+  };
 }
 
 class Widget extends Component {
@@ -86,7 +86,7 @@ class Widget extends Component {
         },
         () => {
           this.requestPaymentHandler(amountInCents);
-        },
+        }
       );
     }
   };
@@ -163,7 +163,9 @@ class Widget extends Component {
           />
         );
       case "loading-screen":
-        return <LoadingScreen height={40} width={40} color="var(--primary-color)" />;
+        return (
+          <LoadingScreen height={40} width={40} color="var(--primary-color)" />
+        );
       default:
         null;
     }
@@ -176,10 +178,7 @@ class Widget extends Component {
           value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
         >
           {actionLabel && (
-            <Button
-              buttonClick={this.openModal}
-              btnText={actionLabel}
-            />
+            <Button buttonClick={this.openModal} btnText={actionLabel} />
           )}
 
           {isModalOpen && (
