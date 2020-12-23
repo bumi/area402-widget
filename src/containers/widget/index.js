@@ -171,9 +171,9 @@ class Widget extends Component {
     }
   };
 
-  render({}, { title, logo, actionLabel, isModalOpen }) {
+  render({}, { title, logo, actionLabel, isModalOpen, styles }) {
     return (
-      <WidgetWrapper className={`${DEFAULT_BASE_CLASSNAME}-wrapper`}>
+      <WidgetWrapper customStyles={styles} className={`${DEFAULT_BASE_CLASSNAME}-wrapper`}>
         <CacheProvider
           value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
         >
@@ -209,6 +209,7 @@ Widget.defaultProps = {
   isModalOpen: false,
   invoiceDetails: null,
   fetchingInvoiceState: false,
+  styles: "",
 };
 
 export default Widget;

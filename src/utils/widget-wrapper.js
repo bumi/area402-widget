@@ -5,4 +5,5 @@ import cssVariables from "./css-variables";
 export const WidgetWrapper = styled.div`
   ${resetCss}
   ${cssVariables}
+  ${(p) => p.customStyles}
 `;
