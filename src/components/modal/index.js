@@ -35,9 +35,6 @@ const Modal = ({ onRequestClose, children, title, logo }) => {
   return (
     <Backdrop>
       <ModalWrapper>
-        <TopCircle />
-        <BottomCircle />
-
         <ModalContainer className={`${DEFAULT_BASE_CLASSNAME}-container`}>
           <Title title={title} logo={logo} onRequestClose={onRequestClose} />
 

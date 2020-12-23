@@ -1,5 +1,20 @@
 import styled from "@emotion/styled";
 
+const topCircleSvg = (color) => btoa(`
+<svg width="160" height="114" fill="${color}" opacity="0.07" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path d="M-218,-100a178,178 0 1,0 356,0a178,178 0 1,0 -356,0" />
+  </g>
+</svg>
+`);
+const bottomCircleSvg = (color) =>  btoa(`
+<svg width="160" height="114" fill="${color}" opacity="0.07" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path d="M0,178a178,178 0 1,0 356,0a178,178 0 1,0 -356,0" />
+  </g>
+</svg>
+`);
+
 export const Backdrop = styled.div`
   background: rgba(0, 0, 0, 0.65);
   bottom: 0;
@@ -34,44 +49,8 @@ export const ModalContainer = styled.div`
   justify-content: space-between;
   font-family: "Open Sans", "Lucida Sans", Helvetica, Arial, sans-serif;
   font-size: 1em;
+  background-image: url('data:image/svg+xml;base64,${topCircleSvg('black')}'), url('data:image/svg+xml;base64,${bottomCircleSvg('black')}');
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
 `;
 
-const TopCircleWrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  z-index: -1;
-  svg {
-    fill: black;
-    fill: var(--primary-color);
-    fill-opacity: 0.07;
-  }
-`;
-
-export const TopCircle = () => (
-  <TopCircleWrapper>
-    <svg width="180" height="130" viewBox="0 0 180 130" fill="none">
-      <circle cx="-40" cy="-100" r="232" />
-    </svg>
-  </TopCircleWrapper>
-);
-
-const BottomCirlceWrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: -5px;
-  text-align: end;
-  z-index: -1;
-  svg {
-    fill: black;
-    fill: var(--primary-color);
-    fill-opacity: 0.07;
-  }
-`;
-
-export const BottomCircle = () => (
-  <BottomCirlceWrapper>
-    <svg width="160" height="114" viewBox="0 0 160 114" fill="none">
-      <circle cx="178" cy="178" r="178" />
-    </svg>
-  </BottomCirlceWrapper>
-);
