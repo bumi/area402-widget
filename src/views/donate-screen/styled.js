@@ -42,7 +42,7 @@ export const TagItem = styled.span(
         border-color: var(--primary-color);
       `
     }
-  `,
+  `
 );
 
 export const CustomInput = styled.input`

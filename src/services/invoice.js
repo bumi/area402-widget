@@ -63,7 +63,7 @@ export default class InvoiceService {
       (invoice) => {
         this.invoice = invoice;
         return invoice;
-      },
+      }
     );
   }
 
@@ -75,7 +75,7 @@ export default class InvoiceService {
     return new Promise((resolve, reject) => {
       window.__a402invoiceWatcher = window.setInterval(() => {
         this._fetch(
-          `${this.apiBaseUrl}/v1/invoice/${this.invoice.identifier}`,
+          `${this.apiBaseUrl}/v1/invoice/${this.invoice.identifier}`
         ).then((invoice) => {
           if (invoice.settled) {
             // replace the locally stored invoice with the settled server response

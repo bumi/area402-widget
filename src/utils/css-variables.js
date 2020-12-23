@@ -4,4 +4,4 @@ const cssVariables = css`
   --primary-color: #764dfb;
   --font-size: 14px;
 `;
-export default cssVariables
+export default cssVariables;
