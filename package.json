@@ -11,7 +11,8 @@
     "build": "preact build --no-prerender --template src/index.ejs --no-sw",
     "serve": "preact serve",
     "dev": "preact watch --template src/index.ejs",
-    "dist": "microbundle --entry src/components/hello-world/index.js"
+    "dist": "microbundle --entry src/components/hello-world/index.js",
+    "format": "prettier --write \"**/*.js\""
   },
   "keywords": [],
   "author": "Michael Bumann <hello@michaelbumann.com>",
@@ -27,7 +28,8 @@
     "jest": "^26.6.3",
     "microbundle": "^0.12.4",
     "preact-cli": "^3.0.5",
-    "preact-widget-scripts": "^0.6.0"
+    "preact-widget-scripts": "^0.6.0",
+    "prettier": "2.2.1"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.0.0",
