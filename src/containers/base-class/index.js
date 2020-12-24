@@ -11,7 +11,7 @@ import ThankyouScreen from "../../views/thankyou-screen";
 import { DEFAULT_API_BASE_URL } from "../../utils/constants";
 
 function getInitialState() {
-  const initialState = Object.assign(WidgetBase.defaultProps, ...arguments);
+  const initialState = Object.assign({}, WidgetBase.defaultProps, ...arguments);
 
   return {
     ...initialState,
