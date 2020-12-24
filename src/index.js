@@ -5,8 +5,6 @@ import Widget from "./containers/widget";
 
 import InlineWidget from "./containers/inline-widget";
 
-export default InlineWidget;
-
 let _habitat = habitat(Widget);
 
 _habitat.render({
@@ -14,3 +12,5 @@ _habitat.render({
   clean: true,
   component: "area402",
 });
+
+export default InlineWidget;
