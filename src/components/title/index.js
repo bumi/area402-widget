@@ -10,7 +10,7 @@ import {
 import Close from "../icons/close";
 import { DEFAULT_BASE_CLASSNAME } from "../../utils/constants";
 
-const Title = ({ title, logo, onRequestClose }) => (
+const Title = ({ title, logo, inline, onRequestClose }) => (
   <TitleWrapper className={`${DEFAULT_BASE_CLASSNAME}-title`}>
     {logo && (
       <LogoWrapper>
@@ -19,10 +19,17 @@ const Title = ({ title, logo, onRequestClose }) => (
     )}
     {!logo && title && <StyledH3>{title}</StyledH3>}
 
-    <IconWrapper onClick={onRequestClose}>
-      <Close />
-    </IconWrapper>
+    {!inline && (
+      <IconWrapper onClick={onRequestClose}>
+        <Close />
+      </IconWrapper>
+    )}
   </TitleWrapper>
 );
+
+Title.defaultProps = {
+  inline: false,
+  onRequestClose: () => {},
+};
 
 export default Title;
