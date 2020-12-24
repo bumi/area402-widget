@@ -1,4 +1,4 @@
-import { h, Component } from "preact";
+import { h } from "preact";
 import { CacheProvider } from "@emotion/react";
 
 import WidgetBase from "../base-class";
@@ -14,7 +14,7 @@ class InlineWidget extends WidgetBase {
         className={`${DEFAULT_BASE_CLASSNAME}-wrapper`}
       >
         <CacheProvider
-          value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
+          value={StyledCache("inline-fourohtwo", `.inline-fourohtwo`)}
         >
           {this.renderModalContent()}
         </CacheProvider>
