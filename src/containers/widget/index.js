@@ -11,6 +11,24 @@ import { WidgetWrapper } from "../../utils/widget-wrapper";
 import { DEFAULT_BASE_CLASSNAME } from "../../utils/constants";
 
 class Widget extends WidgetBase {
+  openModal = () => {
+    this.setState({
+      isModalOpen: true,
+    });
+  };
+
+  closeModal = () => {
+    this.invoiceService.reset();
+    this.setDefaults();
+  };
+
+  openWidget = (attributes) => {
+    this.setState({
+      ...attributes,
+      isModalOpen: true,
+    });
+  };
+
   render({}, { title, logo, actionLabel, isModalOpen, styles }) {
     return (
       <WidgetWrapper
@@ -26,7 +44,7 @@ class Widget extends WidgetBase {
 
           {isModalOpen && (
             <Modal title={title} logo={logo} onRequestClose={this.closeModal}>
-              {this.renderModalContent()}
+              {this.renderWidgetContent()}
             </Modal>
           )}
         </CacheProvider>

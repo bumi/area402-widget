@@ -52,17 +52,6 @@ class WidgetBase extends Component {
     this.setState(getInitialState(this.props, this.widgetConfig));
   };
 
-  closeModal = () => {
-    this.invoiceService.reset();
-    this.setDefaults();
-  };
-
-  openModal = () => {
-    this.setState({
-      isModalOpen: true,
-    });
-  };
-
   requestPayment = (args) => {
     const amountInCents = parseInt(args.amount, 10);
 
@@ -76,16 +65,9 @@ class WidgetBase extends Component {
         },
         () => {
           this.requestPaymentHandler(amountInCents);
-        }
+        },
       );
     }
-  };
-
-  openWidget = (attributes) => {
-    this.setState({
-      ...attributes,
-      isModalOpen: true,
-    });
   };
 
   handleDonateClick = () => {
@@ -123,7 +105,7 @@ class WidgetBase extends Component {
     console.log("entered email: ", value);
   };
 
-  renderModalContent = () => {
+  renderWidgetContent = () => {
     switch (this.state.currentScreen) {
       case "welcome-screen":
         return (
