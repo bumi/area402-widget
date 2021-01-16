@@ -17,7 +17,7 @@ class InlineWidget extends WidgetBase {
         <CacheProvider
           value={StyledCache("inline-fourohtwo", `.inline-fourohtwo`)}
         >
-          <Title logo={logo} title={title} inline={true} />
+          <Title logo={logo} title={title} />
 
           {this.renderWidgetContent()}
         </CacheProvider>
