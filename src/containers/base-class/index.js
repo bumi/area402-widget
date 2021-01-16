@@ -65,7 +65,7 @@ class WidgetBase extends Component {
         },
         () => {
           this.requestPaymentHandler(amountInCents);
-        },
+        }
       );
     }
   };

@@ -19,7 +19,7 @@ class InlineWidget extends WidgetBase {
         >
           <Title logo={logo} title={title} inline={true} />
 
-          {this.renderModalContent()}
+          {this.renderWidgetContent()}
         </CacheProvider>
       </WidgetWrapper>
     );
