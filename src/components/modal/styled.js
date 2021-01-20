@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
 
-const topCircleSvg = (color) => btoa(`
+const topCircleSvg = (color) =>
+  btoa(`
 <svg width="160" height="114" fill="${color}" opacity="0.07" xmlns="http://www.w3.org/2000/svg">
   <g>
     <path d="M-218,-100a178,178 0 1,0 356,0a178,178 0 1,0 -356,0" />
   </g>
 </svg>
 `);
-const bottomCircleSvg = (color) =>  btoa(`
+const bottomCircleSvg = (color) =>
+  btoa(`
 <svg width="160" height="114" fill="${color}" opacity="0.07" xmlns="http://www.w3.org/2000/svg">
   <g>
     <path d="M0,178a178,178 0 1,0 356,0a178,178 0 1,0 -356,0" />
@@ -49,8 +51,8 @@ export const ModalContainer = styled.div`
   justify-content: space-between;
   font-family: "Open Sans", "Lucida Sans", Helvetica, Arial, sans-serif;
   font-size: 1em;
-  background-image: url('data:image/svg+xml;base64,${topCircleSvg('black')}'), url('data:image/svg+xml;base64,${bottomCircleSvg('black')}');
+  background-image: url("data:image/svg+xml;base64,${topCircleSvg("black")}"),
+    url("data:image/svg+xml;base64,${bottomCircleSvg("black")}");
   background-repeat: no-repeat, no-repeat;
   background-position: top left, bottom right;
 `;
-

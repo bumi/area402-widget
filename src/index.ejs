@@ -7,13 +7,24 @@
   </head>
 
   <body>
-    <div class="__fourohtwo">
+    <div class="__fourohtwo __fourohtwo-widget">
       <script type="text/props">
         {
           "currency": "€",
-          "paymentOptions": {"Beer": 1, "Dinner": 5, "Food": 10},
+          "enableEmailSubscription": false,
+          "title": "Area 402 Inline Widget",
+          "paymentOptions": {"Beer": 2, "Dinner": 4, "Food": 8}
+        }
+      </script>
+    </div>
+
+    <div class="__fourohtwo __fourohtwo-inline">
+      <script type="text/props">
+        {
+          "currency": "€",
           "title": "Area 402 Widget",
           "enableEmailSubscription": false,
+          "paymentOptions": {"Beer": 1, "Dinner": 5, "Food": 10},
           "welcomeMessage": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
       </script>
