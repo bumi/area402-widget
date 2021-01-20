@@ -11,12 +11,6 @@ import Close from "../icons/close";
 import { DEFAULT_BASE_CLASSNAME } from "../../utils/constants";
 
 const Title = ({ title, logo, onRequestClose }) => {
-  const handleCloseClick = () => {
-    if (onRequestClose && typeof onRequestClose === "function") {
-      onRequestClose();
-    }
-  };
-
   return (
     <TitleWrapper className={`${DEFAULT_BASE_CLASSNAME}-title`}>
       {logo && (
@@ -27,8 +21,8 @@ const Title = ({ title, logo, onRequestClose }) => {
 
       {!logo && title && <StyledH3>{title}</StyledH3>}
 
-      {!onRequestClose && (
-        <IconWrapper onClick={handleCloseClick}>
+      {onRequestClose && (
+        <IconWrapper onClick={onRequestClose}>
           <Close />
         </IconWrapper>
       )}
