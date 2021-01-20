@@ -158,7 +158,6 @@ WidgetBase.defaultProps = {
   apiToken: "",
   welcomeMessage: "",
   thankyouMessage: "Thank you!",
-  isModalOpen: false,
   invoiceDetails: null,
   fetchingInvoiceState: false,
   styles: "",

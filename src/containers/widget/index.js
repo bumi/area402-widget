@@ -53,6 +53,8 @@ class Widget extends WidgetBase {
   }
 }
 
-Widget.defaultProps = WidgetBase.defaultProps;
+Widget.defaultProps = Object.assign(WidgetBase.defaultProps, {
+  isModalOpen: false,
+});
 
 export default Widget;

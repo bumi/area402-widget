@@ -5,17 +5,17 @@ import Widget from "./containers/widget";
 
 import InlineWidget from "./containers/inline-widget";
 
-let _habitat = habitat(Widget);
-let _habitat2 = habitat(InlineWidget);
+let _habitatWidget = habitat(Widget);
+let _habitatInline = habitat(InlineWidget);
 
-_habitat.render({
-  selector: ".__fourohtwo",
+_habitatWidget.render({
+  selector: ".__fourohtwo-widget",
   clean: true,
   component: "area402",
 });
 
-_habitat2.render({
-  selector: ".inline-fourohtwo",
+_habitatInline.render({
+  selector: ".__fourohtwo-inline",
   clean: true,
   component: "area402Inline",
 });

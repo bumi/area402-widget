@@ -15,7 +15,7 @@ class InlineWidget extends WidgetBase {
         className={`${DEFAULT_BASE_CLASSNAME}-wrapper`}
       >
         <CacheProvider
-          value={StyledCache("inline-fourohtwo", `.inline-fourohtwo`)}
+          value={StyledCache("fourohtwo", `.${DEFAULT_BASE_CLASSNAME}`)}
         >
           <Title logo={logo} title={title} />
 
@@ -26,6 +26,6 @@ class InlineWidget extends WidgetBase {
   }
 }
 
-InlineWidget.defaultProps = WidgetBase.defaultProps;
+InlineWidget.defaultProps = Object.assign(WidgetBase.defaultProps, {});
 
 export default InlineWidget;
