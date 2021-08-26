@@ -44,7 +44,7 @@
     "preact": "^10.5.13",
     "preact-compat": "gist:developit/eeebf4c2449c9848dc95aff847d2454d",
     "preact-habitat": "https://github.com/reznord/preact-habitat.git",
-    "preact-render-to-string": "^5.1.16",
+    "preact-render-to-string": "^5.1.19",
     "preact-router": "^3.2.1",
     "qrcode.react": "^1.0.1",
     "rc-progress": "^3.1.4",
