@@ -39,7 +39,7 @@
     "@emotion/babel-plugin": "^11.2.0",
     "@emotion/css": "^11.0.0",
     "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
     "@emotion/styled-base": "^11.0.0",
     "preact": "^10.5.13",
     "preact-compat": "gist:developit/eeebf4c2449c9848dc95aff847d2454d",
