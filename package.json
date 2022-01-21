@@ -47,7 +47,7 @@
     "preact-render-to-string": "^5.1.19",
     "preact-router": "^3.2.1",
     "qrcode.react": "^1.0.1",
-    "rc-progress": "^3.1.4",
+    "rc-progress": "^3.2.4",
     "stylis-plugin-extra-scope": "https://github.com/tpict/stylis-plugin-extra-scope.git#stylis-v4"
   },
   "jest": {
