@@ -41,7 +41,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@emotion/styled-base": "^11.0.0",
-    "preact": "^10.6.4",
+    "preact": "^10.7.3",
     "preact-compat": "gist:developit/eeebf4c2449c9848dc95aff847d2454d",
     "preact-habitat": "https://github.com/reznord/preact-habitat.git",
     "preact-render-to-string": "^5.1.19",
