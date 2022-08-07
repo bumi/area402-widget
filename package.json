@@ -37,9 +37,9 @@
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.7.2",
-    "@emotion/css": "^11.0.0",
+    "@emotion/css": "^11.10.0",
     "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/styled": "^11.10.0",
     "@emotion/styled-base": "^11.0.0",
     "preact": "^10.6.4",
     "preact-compat": "gist:developit/eeebf4c2449c9848dc95aff847d2454d",
