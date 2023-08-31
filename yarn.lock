@@ -10778,10 +10778,10 @@ raw-loader@^4.0.2:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
-rc-progress@^3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/rc-progress/-/rc-progress-3.2.4.tgz#4036acdae2566438545bc4df2203248babaf7549"
-  integrity sha512-M9WWutRaoVkPUPIrTpRIDpX0SPSrVHzxHdCRCbeoBFrd9UFWTYNWRlHsruJM5FH1AZI+BwB4wOJUNNylg/uFSw==
+rc-progress@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/rc-progress/-/rc-progress-3.5.1.tgz#a3cdfd2fe04eb5c3d43fa1c69e7dd70c73b102ae"
+  integrity sha512-V6Amx6SbLRwPin/oD+k1vbPrO8+9Qf8zW1T8A7o83HdNafEVvAxPV5YsgtKFP+Ud5HghLj33zKOcEHrcrUGkfw==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.6"
